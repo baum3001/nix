@@ -36,6 +36,16 @@
       "$mod, M, exit,"
       "$mod, R, exec, $menu"
       "$mod, C, killactive,"
+
+      "$mod, left, movefocus, l"
+      "$mod, down, movefocus, d"
+      "$mod, up, movefocus, u"
+      "$mod, right, movefocus, r"
+      "$mod CTRL, left, movewindow, l"
+      "$mod CTRL, down, movewindow, d"
+      "$mod CTRL, up, movewindow, u"
+      "$mod CTRL, right, movewindow, r"
+
       ", Print, exec, grimblast copy area" 
     ]
       ++ (

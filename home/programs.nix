@@ -77,6 +77,8 @@
   # fonts
 
   fonts.fontconfig.enable = true;
+
+  
   home.packages = [
     pkgs.gcr
     pkgs.pavucontrol
