@@ -80,6 +80,7 @@
   home.packages = [
     pkgs.gcr
     pkgs.pavucontrol
+    pkgs.signal-desktop
   ];
 
   services = {
