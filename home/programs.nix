@@ -78,8 +78,10 @@
 
   fonts.fontconfig.enable = true;
   home.packages = [
-    pkgs.gcr  
+    pkgs.gcr
+    pavucontrol
   ];
+
   services = {
     gnome-keyring.enable = true;
     hyprpolkitagent.enable = true;
