@@ -76,6 +76,7 @@
       fractal
       fastfetch
       finamp
+      jellytui
     ];
   };
 
