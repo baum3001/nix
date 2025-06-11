@@ -7,9 +7,9 @@
       splash = false;
       splash_offset = 2.0;
       preload =
-        [ "~/etc/nixos/sharkpaper.png" ];
+        [ "~/etc/nixos/darksharkleft.jpg" ];
       wallpaper = [
-        "eDP-1,~/etc/nixos/sharkpaper.png"
+        "eDP-1,~/etc/nixos/darksharkleft.jpg"
       ];
     };
   };
