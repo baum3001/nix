@@ -4,6 +4,7 @@
   imports = [
     ./programs.nix
     ./hyprland.nix
+    ./hyprpaper.nix
   ];
 
 
