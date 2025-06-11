@@ -75,6 +75,7 @@
       tree
       fractal
       fastfetch
+      finamp
     ];
   };
 
