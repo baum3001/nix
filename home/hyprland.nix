@@ -75,7 +75,7 @@
     ];
     general = {
       gaps_in = "5";
-      gaps_out = "20";
+      gaps_out = "10";
       border_size = "2";
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
       # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -134,25 +134,6 @@
         "workspacesIn, 1, 1.21, almostLinear, fade"
         "workspacesOut, 1, 1.94, almostLinear, fade"
       ];
-    };
-    # Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
-    # "Smart gaps" / "No gaps when only"
-    # uncomment all if you wish to use that.
-    # workspace = w[tv1], gapsout:0, gapsin:0
-    # workspace = f[1], gapsout:0, gapsin:0
-    # windowrule = bordersize 0, floating:0, onworkspace:w[tv1]
-    # windowrule = rounding 0, floating:0, onworkspace:w[tv1]
-    # windowrule = bordersize 0, floating:0, onworkspace:f[1]
-    # windowrule = rounding 0, floating:0, onworkspace:f[1]
-    # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-    dwindle = {
-      pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below;;
-      preserve_split = true; # You probably want this
-    };
-    # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    master = {
-      new_status = "inherit";
-      allow_small_split = true;
     };
     # https://wiki.hyprland.org/Configuring/Variables/#misc
     misc = {
