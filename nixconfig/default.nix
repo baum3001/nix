@@ -75,7 +75,6 @@
       tree
       fractal
       fastfetch
-      finamp
       jellyfin-tui
     ];
   };
