@@ -74,7 +74,7 @@
       "systemctl --user start hyprpolkitagent"
     ];
     general = {
-      gaps_in = "5";
+      gaps_in = "3";
       gaps_out = "10";
       border_size = "2";
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
