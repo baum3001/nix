@@ -19,5 +19,8 @@
     displayManager.ly = {
       enable = true;
     };
+    udisks2 = {
+      enable = true;
+    };
   };
 }
