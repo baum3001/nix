@@ -5,7 +5,7 @@
   wayland.windowManager.hyprland.settings = {
     
     monitor = [
-      "auto, 1920x1280@60, auto, 1"
+      " eDP-1, 1920x1280@60, auto, 1"
     ];
 
   #input config
