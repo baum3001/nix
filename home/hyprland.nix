@@ -72,6 +72,7 @@
     exec-once = [
       "waybar"
       "systemctl --user start hyprpolkitagent"
+      "systemctl --user start hyprpaper"
     ];
     general = {
       gaps_in = "3";
