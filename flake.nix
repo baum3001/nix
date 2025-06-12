@@ -22,7 +22,7 @@
           let
             hostName = if surface then "baum-surface-nix" else "baum-desktop-nix";
             hardwareConfiguration =
-              if surface then ./hosts/surface.nix else ./hosts/desktop.nix;
+              if surface then ./hosts/surface else ./hosts/desktop;
           in
           inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
