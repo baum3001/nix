@@ -10,10 +10,7 @@
         [ "~/etc/nixos/darksharkleft.jpg" ];
       wallpaper = [
         "eDP-1,~/etc/nixos/darksharkleft.jpg"
-<<<<<<< HEAD
-=======
         "DP-2,~/etc/nixos/darksharkleft.jpg"
->>>>>>> 1081578 (desktopstuff)
       ];
     };
   };
