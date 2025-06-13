@@ -79,11 +79,12 @@
   fonts.fontconfig.enable = true;
 
   
-  home.packages = [
-    pkgs.gcr
-    pkgs.pavucontrol
-    pkgs.signal-desktop
-    pkgs.kdePackages.dolphin
+  home.packages = with pkgs; [
+    gcr
+    pavucontrol
+    signal-desktop
+    kdePackages.dolphin
+    inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
   ];
 
   services = {

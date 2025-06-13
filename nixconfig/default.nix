@@ -9,6 +9,7 @@
     [ 
       ./services.nix
       ./programs.nix
+      inputs.catppuccin.nixosModules.catppuccin
     ];
 
   networking = {
@@ -42,7 +43,14 @@
   
   hardware.graphics.enable = true;
    
-  
+  # theme
+
+  catppuccin = {
+    enable = true;
+    flavor = "macchiato";
+    accent = "lavender";
+  };
+
   home-manager.backupFileExtension = "backup";
 
   users.users.baum = {
