@@ -69,7 +69,10 @@
         signByDefault = true;
       };
       extraConfig.push.autoSetupRemote = true;
-  };
+    };
+    spotify-player = {
+      enable = true;
+    };
   };
 
 
@@ -85,7 +88,7 @@
     signal-desktop
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
-    spotify-tui
+    protonvpn-gui
   ];
 
   services = {
