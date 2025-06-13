@@ -50,6 +50,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "disk"
 
     ]; 
     packages = with pkgs; [
