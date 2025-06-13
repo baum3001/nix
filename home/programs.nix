@@ -88,7 +88,6 @@
     signal-desktop
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
-    protonvpn-gui
   ];
 
   services = {

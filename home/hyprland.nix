@@ -45,6 +45,7 @@
       "$mod CTRL, down, movewindow, d"
       "$mod CTRL, up, movewindow, u"
       "$mod CTRL, right, movewindow, r"
+      "$mod, v, togglefloating"
 
       ", Print, exec, grimblast copy area" 
     ]
