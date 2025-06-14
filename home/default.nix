@@ -20,6 +20,18 @@
     cursors.enable = false;
   };
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "catppuccin-mocha-blue-compact";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "blue" ];
+        variant = "mocha";
+        size = "compact";
+      };
+    };
+  };
+
   wayland.windowManager.hyprland.enable = true;
 
   programs.home-manager.enable = true;
