@@ -95,7 +95,6 @@
     signal-desktop
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
-    brightnessctl
   ];
 
   services = {
@@ -130,8 +129,11 @@
             # replace with your favorite file manager
             file_manager = "${pkgs.kdePackages.dolphin}/bin/dolphin/";
         };
+      };
     };
-};
+    swayosd = {
+      enable = true;
+    };
   };
 
 }
