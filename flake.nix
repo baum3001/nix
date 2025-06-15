@@ -3,59 +3,68 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     catppuccin.url = "github:catppuccin/nix";
+
     comic-code-ligatures-nerd-font = {
       url = "github:juliuskreutz/ComicCodeLigaturesNerdFont";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-     quickshell = {
+
+    quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
-     };
+    };
   };
 
-  outputs = inputs: {
-    nixosConfigurations =
-      let
-        nixosSystem =
-          surface:
-          let
-            hostName = if surface then "baum-surface-nix" else "baum-desktop-nix";
-            hardwareConfiguration =
-              if surface then ./hosts/surface else ./hosts/desktop;
-          in
-          inputs.nixpkgs.lib.nixosSystem {
+  outputs = inputs: 
+    let
+      inherit (inputs.nixpkgs) lib;
+
+      hostDefs = [
+        {
+          name = "nix-highspec";
+          path = ./hosts/highspec;
+        }
+        {
+          name = "nix-surface";
+          path = ./hosts/surface;
+        }
+        {
+          name = "nix-desktop";
+          path = ./hosts/desktop;
+        }
+      ];
+    in {
+      nixosConfigurations = lib.listToAttrs (map (host:
+        {
+          name = host.name;
+          value = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = { inherit inputs surface; };
+            specialArgs = {
+              inherit inputs;
+              configName = host.name;
+            };
             modules = [
-              { networking.hostName = hostName; }
-              hardwareConfiguration
+              { networking.hostName = host.name; }
+              host.path
               ./nixconfig
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = {
-                    inherit inputs;
-                  };
-                  users.baum = {
-                    imports = [
-                      ./home
-                    ];
-                  };
+                  extraSpecialArgs = { inherit inputs; };
+                  users.baum.imports = [ ./home ];
                 };
               }
             ];
           };
-      in
-      {
-        nix-desktop = nixosSystem false;
-        nix-surface = nixosSystem true;
-      };
-  };
+        }) hostDefs);
+    };
 }
