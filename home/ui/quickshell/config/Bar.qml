@@ -1,15 +1,15 @@
 // Bar.qml
 import Quickshell
+import QtQuick
 
 Scope {
-  // no more time object
-
   Variants {
     model: Quickshell.screens
 
     PanelWindow {
       property var modelData
       screen: modelData
+      color : "#1e1e2e"
 
       anchors {
         top: true
@@ -19,11 +19,12 @@ Scope {
 
       implicitHeight: 30
 
-      ClockWidget {
-        anchors.centerIn: parent
-
-        // no more time binding
+      Row{
+        ClockWidget {
+        color: "white"
       }
+      }
+
     }
   }
 }
