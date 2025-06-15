@@ -1,12 +1,17 @@
-{ inputs, config, pkgs, ...}:
+{ inputs, config, pkgs, specialArgs, ...}:
 
+
+let hostPath = specialArgs.hostPath;
+in
 {
   imports = [
     ./programs.nix
     ./hyprland.nix
     ./hyprpaper.nix
     inputs.catppuccin.homeModules.catppuccin
+    "${toString hostPath}/graphics.nix"
   ];
+  
 
   home.username = "baum";
   home.homeDirectory = "/home/baum";

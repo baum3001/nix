@@ -59,7 +59,10 @@
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; };
+                  extraSpecialArgs = { 
+                    hostPath = host.path;
+                    inherit inputs; 
+                  };
                   users.baum.imports = [ ./home ];
                 };
               }
