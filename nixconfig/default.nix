@@ -66,6 +66,7 @@
       fractal
       fastfetch
       jellyfin-tui
+      inputs.quickshell.packages.${pkgs.system}.default
     ];
   };
 

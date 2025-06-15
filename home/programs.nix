@@ -4,7 +4,7 @@
   programs = {
     vscode = {
       enable = true;
-      package = pkgs.vscodium;
+      package = pkgs.vscodium.fhs;
       profiles.default = {
 
         extensions = with pkgs.vscode-extensions; [
@@ -88,7 +88,11 @@
 
   fonts.fontconfig.enable = true;
 
-  
+  home.file.".config/quickshell" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/home/ui/quickshell/config";
+  };
+
+
   home.packages = with pkgs; [
     gcr
     pavucontrol

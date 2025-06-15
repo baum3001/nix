@@ -8,6 +8,10 @@
     inputs.catppuccin.homeModules.catppuccin
   ];
 
+  
+  home.file.".config/quickshell" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/home/ui/quickshell/config";
+  };
 
   home.username = "baum";
   home.homeDirectory = "/home/baum";
