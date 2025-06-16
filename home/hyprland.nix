@@ -75,7 +75,7 @@
 
   # exec
     exec-once = [
-      "waybar"
+      "systemctl --user start waybar"
       "systemctl --user start hyprpolkitagent"
       "systemctl --user start hyprpaper"
       "systemctl --user start swayosd"
