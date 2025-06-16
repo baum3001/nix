@@ -124,6 +124,9 @@
       };
 
     };
+    blueman-applet = {
+      enable = true;
+    };
     udiskie = {
       enable = true;
       settings = {

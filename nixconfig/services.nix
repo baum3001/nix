@@ -8,7 +8,24 @@
     };
     pipewire = {
       enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
       pulse.enable = true;
+      extraConfig.pipewire-pulse = {
+        "disable-auto-gain" = {
+          "pulse.rules" = [
+            {
+              matches = [ { "media.class" = "Audio/Source"; } ];
+              actions = {
+                quirks = [ "block-source-volume" ];
+              };
+            }
+          ];
+        };
+      };
+    };
+    blueman = {
+      enable = true;
     };
     libinput = {
       enable = true;
@@ -22,5 +39,9 @@
     udisks2 = {
       enable = true;
     };
+  };
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
   };
 }
