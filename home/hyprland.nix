@@ -78,6 +78,7 @@
       "waybar"
       "systemctl --user start hyprpolkitagent"
       "systemctl --user start hyprpaper"
+      "systemctl --user start swayosd"
     ];
     general = {
       gaps_in = "3";
