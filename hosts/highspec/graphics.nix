@@ -6,10 +6,19 @@ wayland.windowManager.hyprland.settings.monitor = [
       " HDMI-A-2, 1920x1280, auto-right, 1, transform, 1"
       " DP-2, 1920x1280@60, auto-left, 1, transform, 1"
     ];
-services.hyprpaper.settings.wallpaper = [
-        "DP-1,/home/baum/etc/nixos/darksharkleft.jpg"
-        "DP-2,~/etc/nixos/darksharkleft.jpg"
-        "HDMI-A-1,~/etc/nixos/darksharkleft.jpg"
-        "HDMI-A-2,~/etc/nixos/darksharkleft.jpg"
-      ];
+services.hyprpaper.settings = {
+  wallpaper = [
+    "DP-1,~/etc/nixos/sharkpaper.png"
+    "DP-2,~/etc/nixos/darksharkleft.jpg"
+    "HDMI-A-1,~/etc/nixos/darksharkleft.jpg"
+    "HDMI-A-2,~/etc/nixos/darksharkleft.jpg"
+  ];
+  preload =
+    [ 
+      "~/etc/nixos/darksharkleft.jpg"
+      "~/etc/nixos/sharkpaper.png"
+    ];
+    
+};
+
 }
