@@ -1,6 +1,9 @@
 { inputs, config, pkgs, specialArgs, ...}:
 {
 wayland.windowManager.hyprland.settings.monitor = [
-      " eDP-1, 1920x1280@60, auto, 1"
+      " DP-1, 4096x2160, 0x0, 1"
+      " HDMI-A-1, 1920x1280@60, 2048x-1080, 1"
+      " HDMI-A-2, 1920x1280, auto-right, 1, transform, 1"
+      " DP-2, 1920x1280@60, auto-left, 1, transform, 1"
     ];
 }
