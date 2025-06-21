@@ -5,8 +5,8 @@ let hostPath = specialArgs.hostPath;
 in
 {
   imports = [
-    ./programs.nix
     ./hyprland.nix
+    ./programs
     ./hyprpaper.nix
     inputs.catppuccin.homeModules.catppuccin
     "${toString hostPath}/graphics.nix"
