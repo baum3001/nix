@@ -1,6 +1,11 @@
 { inputs, config, pkgs, ...}:
 
 {
+  home.packages = with pkgs; [
+    grim
+    slurp
+    wl-clipboard
+  ];
   # Hyprland config 
   wayland.windowManager.hyprland.settings = {
     
@@ -21,11 +26,12 @@
 
     };
 
-  # keybinds
+  # keybindss
 
     "$mod" = "SUPER";
     "$terminal" = "kitty";
     "$menu" = "wofi --show drun";
+    "$screenshot" = "slurp | grim -g - -  | wl-copy";
 
     bind = [
       "$mod, F, exec, librewolf"
@@ -43,8 +49,8 @@
       "$mod CTRL, up, movewindow, u"
       "$mod CTRL, right, movewindow, r"
       "$mod, v, togglefloating"
+      "$mod, s , exec, $screenshot"
 
-      ", Print, exec, grimblast copy area" 
     ]
       ++ (
         # workspaces

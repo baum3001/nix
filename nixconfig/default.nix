@@ -59,6 +59,7 @@
       "wheel"
       "networkmanager"
       "disk"
+      "adbusers"
 
     ]; 
     packages = with pkgs; [
@@ -77,6 +78,9 @@
   environment.systemPackages = with pkgs; [
     wget
     bitwarden-desktop
+    wineWowPackages.staging
+    scrcpy
+    kdePackages.partitionmanager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -1,0 +1,78 @@
+<!DOCTYPE patchbay>
+<patchbay name="audiojank" version="0.9.3">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Surround 5.1" port="ALC1220 Analog:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PulseAudio Volume Control-4" port="PulseAudio Volume Control:monitor_FL"/>
+   <input node="HyperX QuadCast Analog Stereo" port="HyperX Quadcast:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PulseAudio Volume Control-5" port="PulseAudio Volume Control:monitor_FL"/>
+   <input node="HyperX QuadCast Analog Stereo" port="HyperX Quadcast:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Pro 2" port="ALC1220 Alt Analog:capture_AUX0"/>
+   <input node="Starship/Matisse HD Audio Controller Pro" port="ALC1220 Analog:playback_AUX0"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PulseAudio Volume Control-4" port="PulseAudio Volume Control:monitor_FR"/>
+   <input node="HyperX QuadCast Analog Stereo" port="HyperX Quadcast:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PulseAudio Volume Control-5" port="PulseAudio Volume Control:monitor_FR"/>
+   <input node="HyperX QuadCast Analog Stereo" port="HyperX Quadcast:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:monitor_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Surround 5.1" port="ALC1220 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Pro 2" port="ALC1220 Alt Analog:capture_AUX1"/>
+   <input node="Starship/Matisse HD Audio Controller Pro" port="ALC1220 Analog:playback_AUX1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Digital Stereo (IEC958)" port="ALC1220 Digital:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PulseAudio Volume Control-5" port="PulseAudio Volume Control:monitor_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Digital Stereo (IEC958)" port="ALC1220 Digital:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FR"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Surround 5.1" port="ALC1220 Analog:playback_FR"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="PulseAudio Volume Control-5" port="PulseAudio Volume Control:monitor_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Digital Stereo (IEC958)" port="ALC1220 Digital:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Pro" port="ALC1220 Analog:capture_AUX0"/>
+   <input node="Starship/Matisse HD Audio Controller Pro" port="ALC1220 Analog:playback_AUX0"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:monitor_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Surround 5.1" port="ALC1220 Analog:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Digital Stereo (IEC958)" port="ALC1220 Digital:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Pro" port="ALC1220 Analog:capture_AUX1"/>
+   <input node="Starship/Matisse HD Audio Controller Pro" port="ALC1220 Analog:playback_AUX1"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:capture_FL"/>
+   <input node="Starship/Matisse HD Audio Controller Analog Stereo" port="ALC1220 Analog:playback_FL"/>
+  </item>
+ </items>
+</patchbay>
+

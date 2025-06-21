@@ -83,6 +83,9 @@
     spotify-player = {
       enable = true;
     };
+    lutris = {
+      enable = true;
+    };
   };
 
 
@@ -98,6 +101,7 @@
 
   home.packages = with pkgs; [
     gcr
+    qpwgraph
     pavucontrol
     signal-desktop
     kdePackages.dolphin
