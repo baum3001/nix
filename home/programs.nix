@@ -48,6 +48,9 @@
         "privacy.clearOnShutdown.history" = false;
         "privacy.clearOnShutdown.cookies" = false;
         "network.cookie.lifetimePolicy" = 0;
+        "privacy.clearSiteData.cookiesAndStorage" = false;
+        "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+        "privacy.clearHistory.cookiesAndStorage" = false;
       };
     };
     waybar = {
