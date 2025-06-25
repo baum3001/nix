@@ -95,6 +95,7 @@
     qpwgraph
     pavucontrol
     signal-desktop
+    altus
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
   ];
