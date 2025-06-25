@@ -38,7 +38,7 @@
         "browser.startup.homepage" = "about:home";
         "browser.toolbar.bookmarks.visibility" = "newtab";
         "browser.toolbars.bookmarks.visibility" = "newtab";
-        "browser.urlbar.suggest.bookmark" = false;
+        "browser.urlbar.suggest.bookmark" = true;
         "browser.urlbar.suggest.engines" = false;
         "browser.urlbar.suggest.history" = true;
         "browser.urlbar.suggest.openpage" = false;

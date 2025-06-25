@@ -65,6 +65,7 @@
     packages = with pkgs; [
       tree
       fractal
+      gimp3
       fastfetch
       jellyfin-tui
       inputs.quickshell.packages.${pkgs.system}.default

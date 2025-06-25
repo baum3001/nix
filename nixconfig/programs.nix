@@ -29,5 +29,8 @@
     "steam-unwrapped"
     "steam-run"
   ];
+  fonts.packages = with pkgs; [
+    ipafont
+  ];
 
 }
