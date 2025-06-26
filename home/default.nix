@@ -7,8 +7,10 @@ in
   imports = [
     ./hyprland.nix
     ./programs
-    ./hyprpaper.nix
+   #  ./hyprpaper.nix
     inputs.catppuccin.homeModules.catppuccin
+    inputs.illogical-impulse.homeManagerModules.default
+    ./illogical-impulse.nix
     "${toString hostPath}/graphics.nix"
   ];
   
@@ -18,7 +20,7 @@ in
   home.stateVersion = "25.05";
 
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = "mocha";
     accent = "lavender";
     cursors.enable = false;
