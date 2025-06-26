@@ -35,7 +35,7 @@
       "$mod, C, killactive,"
 
 
-    ]
+    ];
 
     bindm = [
       
