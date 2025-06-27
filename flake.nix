@@ -6,6 +6,9 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    
     comic-code-ligatures-nerd-font = {
       url = "github:juliuskreutz/ComicCodeLigaturesNerdFont";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,6 +56,7 @@
             modules = [
               { networking.hostName = host.name; }
               host.path
+              inputs.sops-nix.nixosModules.sops
               ./nixconfig
               inputs.home-manager.nixosModules.home-manager
               {
