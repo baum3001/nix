@@ -94,6 +94,7 @@
     gcr
     qpwgraph
     pavucontrol
+    feishin
     signal-desktop
     altus
     kdePackages.dolphin
