@@ -51,6 +51,7 @@
     vesktop = {
       enable = true;
       settings = {
+        arRPC = true;
         disableMinSize = true;
         hardwareAcceleration = true;
       };
