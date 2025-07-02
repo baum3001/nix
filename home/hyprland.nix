@@ -81,10 +81,9 @@
 
   # exec
     exec-once = [
-      "systemctl --user start waybar"
       "systemctl --user start hyprpolkitagent"
-      "systemctl --user start hyprpaper"
       "systemctl --user start swayosd"
+      "bash ~/etc/nixos/home/ui/quickshell/run.sh"
     ];
     general = {
       gaps_in = "3";

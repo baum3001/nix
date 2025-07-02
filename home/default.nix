@@ -7,7 +7,6 @@ in
   imports = [
     ./hyprland.nix
     ./programs
-    ./hyprpaper.nix
     inputs.catppuccin.homeModules.catppuccin
     "${toString hostPath}/graphics.nix"
   ];
