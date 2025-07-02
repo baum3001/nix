@@ -7,10 +7,11 @@ in
   imports = [
     ./hyprland.nix
     ./programs
+#    ./quickshell
    #  ./hyprpaper.nix
     inputs.catppuccin.homeModules.catppuccin
-    inputs.illogical-impulse.homeManagerModules.default
-    ./illogical-impulse.nix
+#    inputs.illogical-impulse.homeManagerModules.default
+#    ./illogical-impulse.nix
     "${toString hostPath}/graphics.nix"
   ];
   

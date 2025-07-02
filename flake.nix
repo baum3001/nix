@@ -22,6 +22,15 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    caelestia-cli.url = "github:t7h-dots/cli";
+    ags = {
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: 

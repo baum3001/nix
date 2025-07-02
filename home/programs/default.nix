@@ -98,6 +98,36 @@
     altus
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
+
+    # quickshell
+    hyprpaper
+    imagemagick
+    wl-clipboard
+    fuzzel
+    socat
+    foot
+    jq
+    python3
+    python3Packages.materialyoucolor
+    grim
+    wayfreeze
+    wl-screenrec
+    inputs.astal.packages.${pkgs.system}.default
+    
+    # Additional dependencies
+    lm_sensors
+    curl
+    material-symbols
+    nerd-fonts.jetbrains-mono
+    ibm-plex
+    fd
+    python3Packages.pyaudio
+    python3Packages.numpy
+    cava
+    networkmanager
+    bluez
+    ddcutil
+    brightnessctl
   ];
 
   services = {

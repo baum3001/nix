@@ -79,6 +79,7 @@
     wget
     bitwarden-desktop
     wineWowPackages.staging
+    inputs.caelestia-cli.packages.${pkgs.system}.default
     scrcpy
     kdePackages.partitionmanager
   ];
