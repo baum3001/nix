@@ -3,6 +3,7 @@ pragma ComponentBehavior: Bound
 import "root:/widgets"
 import "root:/services"
 import "root:/config"
+import "root:/utils"
 import Quickshell
 import QtQuick
 
@@ -49,6 +50,18 @@ Column {
 
         KeyNavigation.up: logout
         KeyNavigation.down: hibernate
+    }
+
+    AnimatedImage {
+        width: Config.session.sizes.button
+        height: Config.session.sizes.button
+        sourceSize.width: width
+        sourceSize.height: height
+
+        playing: visible
+        asynchronous: true
+        speed: 0.7
+        source: Paths.expandTilde(Config.paths.sessionGif)
     }
 
     SessionButton {
@@ -101,6 +114,7 @@ Column {
             text: button.icon
             color: button.activeFocus ? Colours.palette.m3onSecondaryContainer : Colours.palette.m3onSurface
             font.pointSize: Appearance.font.size.extraLarge
+            font.weight: 500
         }
     }
 }

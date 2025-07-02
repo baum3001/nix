@@ -5,6 +5,7 @@ import "root:/utils"
 import Quickshell
 import Quickshell.Io
 import QtQuick
+import QtQuick.Dialogs
 
 Row {
     id: root
@@ -26,7 +27,8 @@ Row {
 
             text: "person"
             fill: 1
-            font.pointSize: (info.implicitHeight / 2) || 1
+            grade: 200
+            font.pointSize: Math.floor(info.implicitHeight / 2) || 1
         }
 
         CachingImage {
@@ -34,6 +36,84 @@ Row {
 
             anchors.fill: parent
             path: `${Paths.home}/.face`
+        }
+
+        MouseArea {
+            anchors.fill: parent
+
+            cursorShape: Qt.PointingHandCursor
+            hoverEnabled: true
+
+            onClicked: {
+                root.visibilities.launcher = false;
+                dialog.open();
+            }
+
+            StyledRect {
+                anchors.fill: parent
+
+                color: Qt.alpha(Colours.palette.m3primary, 0.1)
+                opacity: parent.containsMouse ? 1 : 0
+
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: Appearance.anim.durations.normal
+                        easing.type: Easing.BezierSpline
+                        easing.bezierCurve: Appearance.anim.curves.standard
+                    }
+                }
+            }
+
+            StyledRect {
+                anchors.centerIn: parent
+
+                implicitWidth: selectIcon.implicitHeight + Appearance.padding.small * 2
+                implicitHeight: selectIcon.implicitHeight + Appearance.padding.small * 2
+
+                radius: Appearance.rounding.normal
+                color: Colours.palette.m3primary
+                scale: parent.containsMouse ? 1 : 0.5
+                opacity: parent.containsMouse ? 1 : 0
+
+                MaterialIcon {
+                    id: selectIcon
+
+                    anchors.centerIn: parent
+                    anchors.horizontalCenterOffset: -font.pointSize * 0.02
+
+                    text: "frame_person"
+                    color: Colours.palette.m3onPrimary
+                    font.pointSize: Appearance.font.size.extraLarge
+                }
+
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: Appearance.anim.durations.expressiveFastSpatial
+                        easing.type: Easing.BezierSpline
+                        easing.bezierCurve: Appearance.anim.curves.expressiveFastSpatial
+                    }
+                }
+
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: Appearance.anim.durations.expressiveFastSpatial
+                        easing.type: Easing.BezierSpline
+                        easing.bezierCurve: Appearance.anim.curves.expressiveFastSpatial
+                    }
+                }
+            }
+        }
+
+        FileDialog {
+            id: dialog
+
+            nameFilters: [`Image files (${Wallpapers.extensions.map(e => `*.${e}`).join(" ")})`]
+
+            onAccepted: {
+                Paths.copy(selectedFile, `${Paths.home}/.face`);
+                pfp.pathChanged();
+                Quickshell.execDetached(["notify-send", "-a", "caelestia-shell", "-u", "low", "Profile picture changed", `Profile picture changed to ${Paths.strip(selectedFile)}`]);
+            }
         }
     }
 
@@ -47,6 +127,7 @@ Row {
             icon: Icons.osIcon
             text: Icons.osName
             colour: Colours.palette.m3primary
+            materialIcon: false
         }
 
         InfoLine {
@@ -73,7 +154,7 @@ Row {
                 property string uptime
 
                 running: true
-                command: ["/bin/sh", "-c", "uptime | awk -F'up |,|user' '{gsub(/^ +| +$/, \"\", $2); print $2}'"]
+                command: ["uptime", "-p"]
                 stdout: StdioCollector {
                     onStreamFinished: uptimeProc.uptime = text.trim()
                 }
@@ -87,6 +168,7 @@ Row {
         required property string icon
         required property string text
         required property color colour
+        property bool materialIcon: true
 
         implicitWidth: icon.implicitWidth + text.width + text.anchors.leftMargin
         implicitHeight: Math.max(icon.implicitHeight, text.implicitHeight)
@@ -97,12 +179,11 @@ Row {
             anchors.left: parent.left
             anchors.leftMargin: (Config.dashboard.sizes.infoIconSize - implicitWidth) / 2
 
+            fill: 1
             text: line.icon
             color: line.colour
             font.pointSize: Appearance.font.size.normal
-            font.variableAxes: ({
-                    FILL: 1
-                })
+            font.family: line.materialIcon ? Appearance.font.family.material : Appearance.font.family.sans
         }
 
         StyledText {
