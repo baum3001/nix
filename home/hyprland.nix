@@ -33,6 +33,7 @@
     "$menu" = "wofi --show drun";
     "$screenshot" = "slurp | grim -g - -  | wl-copy";
 
+
     bind = [
       "$mod, F, exec, librewolf"
       "$mod, Q, exec, $terminal"
@@ -41,6 +42,10 @@
       "$mod, C, killactive,"
 
       "$mod, D, global, caelestia:showall"
+      "Ctrl+Alt, Delete, global, caelestia:session"
+      "$mod, L, global, caelestia:lock"
+      "SUPER+Shift, S, global, caelestia:screenshotFreeze"
+      "$mod ,SPACE , global, caelestia:launcher"
       
       "$mod, left, movefocus, l"
       "$mod, down, movefocus, d"

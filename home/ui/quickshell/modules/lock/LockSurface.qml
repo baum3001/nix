@@ -104,13 +104,18 @@ WlSessionLockSurface {
         lock: root
     }
 
-    WeatherInfo {
+    Loader {
         id: weather
+        active: root.screen.width > Config.lock.sizes.smallScreenWidth
 
         anchors.top: parent.bottom
         anchors.right: parent.left
         anchors.topMargin: -backgrounds.weatherTop
         anchors.rightMargin: -backgrounds.weatherRight
+
+        sourceComponent: WeatherInfo{
+
+        }
     }
 
     Loader {
