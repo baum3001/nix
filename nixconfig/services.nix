@@ -27,6 +27,13 @@
     blueman = {
       enable = true;
     };
+    upower = {
+      enable = true;
+
+    };
+    power-profiles-daemon = {
+      enable = true;
+    };
     libinput = {
       enable = true;
     };
