@@ -44,9 +44,6 @@
       enable = true;    
 
     };
-    waybar = {
-      enable = true;
-      
     };
     vesktop = {
       enable = true;
@@ -96,6 +93,7 @@
     qpwgraph
     pavucontrol
     feishin
+    gotop
     signal-desktop
     altus
     kdePackages.dolphin
