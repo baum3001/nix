@@ -44,7 +44,7 @@
       enable = true;    
 
     };
-    };
+    
     vesktop = {
       enable = true;
       settings = {
@@ -113,6 +113,7 @@
     wayfreeze
     wl-screenrec
     inputs.astal.packages.${pkgs.system}.default
+    gtk3
     
     # Additional dependencies
     lm_sensors

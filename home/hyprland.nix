@@ -40,6 +40,8 @@
       "$mod, R, exec, $menu"
       "$mod, C, killactive,"
 
+      "$mod, D, global, caelestia:showall"
+      
       "$mod, left, movefocus, l"
       "$mod, down, movefocus, d"
       "$mod, up, movefocus, u"
