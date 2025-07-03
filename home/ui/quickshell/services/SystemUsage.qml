@@ -9,22 +9,19 @@ Singleton {
 
     property real cpuPerc
     property real cpuTemp
-    property string gpuType: "NONE"
     property real gpuPerc
     property real gpuTemp
-    property real memUsed
-    property real memTotal
+    property int memUsed
+    property int memTotal
     readonly property real memPerc: memTotal > 0 ? memUsed / memTotal : 0
-    property real storageUsed
-    property real storageTotal
+    property int storageUsed
+    property int storageTotal
     property real storagePerc: storageTotal > 0 ? storageUsed / storageTotal : 0
 
-    property real lastCpuIdle
-    property real lastCpuTotal
+    property int lastCpuIdle
+    property int lastCpuTotal
 
-    property int refCount
-
-    function formatKib(kib: real): var {
+    function formatKib(kib: int): var {
         const mib = 1024;
         const gib = 1024 ** 2;
         const tib = 1024 ** 3;
@@ -51,16 +48,16 @@ Singleton {
     }
 
     Timer {
-        running: root.refCount > 0
+        running: true
         interval: 3000
         repeat: true
-        triggeredOnStart: true
         onTriggered: {
             stat.reload();
             meminfo.reload();
             storage.running = true;
+            cpuTemp.running = true;
             gpuUsage.running = true;
-            sensors.running = true;
+            gpuTemp.running = true;
         }
     }
 
@@ -99,6 +96,7 @@ Singleton {
     Process {
         id: storage
 
+        running: true
         command: ["sh", "-c", "df | grep '^/dev/' | awk '{print $1, $3, $4}'"]
         stdout: StdioCollector {
             onStreamFinished: {
@@ -139,58 +137,40 @@ Singleton {
     }
 
     Process {
-        id: gpuTypeCheck
+        id: cpuTemp
 
         running: true
-        command: ["sh", "-c", "if ls /sys/class/drm/card*/device/gpu_busy_percent 2>/dev/null | grep -q .; then echo GENERIC; elif command -v nvidia-smi >/dev/null; then echo NVIDIA; else echo NONE; fi"]
+        command: ["sh", "-c", "cat /sys/class/thermal/thermal_zone*/temp"]
         stdout: StdioCollector {
-            onStreamFinished: root.gpuType = text.trim()
+            onStreamFinished: {
+                const temps = text.trim().split(" ");
+                const sum = temps.reduce((acc, d) => acc + parseInt(d, 10), 0);
+                root.cpuTemp = sum / temps.length / 1000;
+            }
         }
     }
 
     Process {
         id: gpuUsage
 
-        command: root.gpuType === "GENERIC" ? ["sh", "-c", "cat /sys/class/drm/card*/device/gpu_busy_percent"] : root.gpuType === "NVIDIA" ? ["nvidia-smi", "--query-gpu=utilization.gpu,temperature.gpu", "--format=csv,noheader,nounits"] : ["echo"]
+        running: true
+        command: ["sh", "-c", "cat /sys/class/drm/card*/device/gpu_busy_percent"]
         stdout: StdioCollector {
             onStreamFinished: {
-                if (root.gpuType === "GENERIC") {
-                    const percs = text.trim().split("\n");
-                    const sum = percs.reduce((acc, d) => acc + parseInt(d, 10), 0);
-                    root.gpuPerc = sum / percs.length / 100;
-                } else if (root.gpuType === "NVIDIA") {
-                    const [usage, temp] = text.trim().split(",");
-                    root.gpuPerc = parseInt(usage, 10) / 100;
-                    root.gpuTemp = parseInt(temp, 10);
-                } else {
-                    root.gpuPerc = 0;
-                    root.gpuTemp = 0;
-                }
+                const percs = text.trim().split("\n");
+                const sum = percs.reduce((acc, d) => acc + parseInt(d, 10), 0);
+                root.gpuPerc = sum / percs.length / 100;
             }
         }
     }
 
     Process {
-        id: sensors
+        id: gpuTemp
 
+        running: true
         command: ["sensors"]
-        environment: ({
-                LANG: "C",
-                LC_ALL: "C"
-            })
         stdout: StdioCollector {
             onStreamFinished: {
-                let cpuTemp = text.match(/(?:Package id [0-9]+|Tdie):\s+((\+|-)[0-9.]+)(°| )C/);
-                if (!cpuTemp)
-                    // If AMD Tdie pattern failed, try fallback on Tctl
-                    cpuTemp = text.match(/Tctl:\s+((\+|-)[0-9.]+)(°| )C/);
-
-                if (cpuTemp)
-                    root.cpuTemp = parseFloat(cpuTemp[1]);
-
-                if (root.gpuType !== "GENERIC")
-                    return;
-
                 let eligible = false;
                 let sum = 0;
                 let count = 0;
@@ -201,11 +181,7 @@ Singleton {
                     else if (line === "")
                         eligible = false;
                     else if (eligible) {
-                        let match = line.match(/^(temp[0-9]+|GPU core|edge)+:\s+\+([0-9]+\.[0-9]+)(°| )C/);
-                        if (!match)
-                            // Fall back to junction/mem if GPU doesn't have edge temp (for AMD GPUs)
-                            match = line.match(/^(junction|mem)+:\s+\+([0-9]+\.[0-9]+)(°| )C/);
-
+                        const match = line.match(/^(temp[0-9]+|GPU core|edge)+:\s+\+([0-9]+\.[0-9]+)(°| )C/);
                         if (match) {
                             sum += parseFloat(match[2]);
                             count++;

@@ -40,25 +40,30 @@ WlSessionLockSurface {
     }
 
     ScreencopyView {
-        id: background
+        id: screencopy
 
         anchors.fill: parent
         captureSource: root.screen
+        visible: false
+    }
 
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            autoPaddingEnabled: false
-            blurEnabled: true
-            blur: root.locked ? 1 : 0
-            blurMax: 64
-            blurMultiplier: 1
+    MultiEffect {
+        id: background
 
-            Behavior on blur {
-                Anim {}
-            }
-        }
+        anchors.fill: parent
+
+        source: screencopy
+        autoPaddingEnabled: false
+        blurEnabled: true
+        blur: root.locked ? 1 : 0
+        blurMax: 64
+        blurMultiplier: 1
 
         Behavior on opacity {
+            Anim {}
+        }
+
+        Behavior on blur {
             Anim {}
         }
     }
@@ -74,13 +79,15 @@ WlSessionLockSurface {
         statusHeight: status.item?.nonAnimHeight ?? 0
         isNormal: root.screen.width > Config.lock.sizes.smallScreenWidth
         isLarge: root.screen.width > Config.lock.sizes.largeScreenWidth
+        visible: false
+    }
 
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            shadowEnabled: true
-            blurMax: 15
-            shadowColor: Qt.alpha(Colours.palette.m3shadow, 0.7)
-        }
+    MultiEffect {
+        anchors.fill: source
+        source: backgrounds
+        shadowEnabled: true
+        blurMax: 15
+        shadowColor: Qt.alpha(Colours.palette.m3shadow, 0.7)
     }
 
     Clock {

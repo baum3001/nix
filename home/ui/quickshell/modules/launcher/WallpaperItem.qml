@@ -2,7 +2,6 @@ import "root:/widgets"
 import "root:/services"
 import "root:/config"
 import Quickshell
-import Quickshell.Widgets
 import QtQuick
 import QtQuick.Effects
 
@@ -33,10 +32,34 @@ StyledRect {
         }
     }
 
+    CachingImage {
+        id: image
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: Appearance.padding.large
+
+        visible: false
+        path: root.modelData.path
+        smooth: !root.PathView.view.moving
+
+        width: Config.launcher.sizes.wallpaperWidth
+        height: width / 16 * 9
+    }
+
+    Rectangle {
+        id: mask
+
+        layer.enabled: true
+        layer.smooth: true
+        visible: false
+        anchors.fill: image
+        radius: Appearance.rounding.normal
+    }
+
     RectangularShadow {
         opacity: root.PathView.isCurrentItem ? 0.7 : 0
-        anchors.fill: image
-        radius: image.radius
+        anchors.fill: mask
+        radius: mask.radius
         color: Colours.palette.m3shadow
         blur: 10
         spread: 3
@@ -46,23 +69,13 @@ StyledRect {
         }
     }
 
-    ClippingRectangle {
-        id: image
-
-        anchors.horizontalCenter: parent.horizontalCenter
-        y: Appearance.padding.large
-        color: "transparent"
-        radius: Appearance.rounding.normal
-
-        implicitWidth: Config.launcher.sizes.wallpaperWidth
-        implicitHeight: implicitWidth / 16 * 9
-
-        CachingImage {
-            path: root.modelData.path
-            smooth: !root.PathView.view.moving
-
-            anchors.fill: parent
-        }
+    MultiEffect {
+        anchors.fill: image
+        source: image
+        maskEnabled: true
+        maskSource: mask
+        maskSpreadAtMin: 1
+        maskThresholdMin: 0.5
     }
 
     StyledText {

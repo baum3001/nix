@@ -43,13 +43,16 @@ Singleton {
         id: getDevices
 
         running: true
-        command: ["fish", "-c", `
-            for a in (bluetoothctl devices)
-                if string match -q 'Device *' $a
-                    bluetoothctl info $addr (string split ' ' $a)[2]
-                    echo
-                end
-            end`]
+        command: ["sh", "-c", `
+            for a in $(bluetoothctl devices); do
+                case "$a" in
+                    Device*)
+                        addr=$(echo "$a" | awk '{print $2}')
+                        bluetoothctl info "$addr"
+                        echo
+                        ;;
+                esac
+            done`]
         environment: ({
                 LANG: "C",
                 LC_ALL: "C"

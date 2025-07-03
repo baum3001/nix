@@ -10,9 +10,7 @@ import QtQuick.Layouts
 Item {
     id: root
 
-    required property Item wrapper
-
-    implicitWidth: Hyprland.activeToplevel ? child.implicitWidth : -Appearance.padding.large * 2
+    implicitWidth: Hyprland.activeClient ? child.implicitWidth : -Appearance.padding.large * 2
     implicitHeight: child.implicitHeight
 
     Column {
@@ -33,7 +31,7 @@ Item {
 
                 Layout.alignment: Qt.AlignVCenter
                 implicitSize: details.implicitHeight
-                source: Icons.getAppIcon(Hyprland.activeToplevel?.lastIpcObject.class ?? "", "image-missing")
+                source: Icons.getAppIcon(Hyprland.activeClient?.wmClass ?? "", "nix-snowflake")
             }
 
             ColumnLayout {
@@ -44,14 +42,14 @@ Item {
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: Hyprland.activeToplevel?.title ?? ""
+                    text: Hyprland.activeClient?.title ?? ""
                     font.pointSize: Appearance.font.size.normal
                     elide: Text.ElideRight
                 }
 
                 StyledText {
                     Layout.fillWidth: true
-                    text: Hyprland.activeToplevel?.lastIpcObject.class ?? ""
+                    text: Hyprland.activeClient?.wmClass ?? ""
                     color: Colours.palette.m3onSurfaceVariant
                     elide: Text.ElideRight
                 }
@@ -67,7 +65,7 @@ Item {
                     radius: Appearance.rounding.normal
 
                     function onClicked(): void {
-                        root.wrapper.detach("winfo");
+                    // TODO
                     }
                 }
 
@@ -80,6 +78,9 @@ Item {
                     text: "chevron_right"
 
                     font.pointSize: Appearance.font.size.large
+                    font.variableAxes: ({
+                            opsz: Appearance.font.size.large
+                        })
                 }
             }
         }
@@ -91,7 +92,7 @@ Item {
             ScreencopyView {
                 id: preview
 
-                captureSource: Hyprland.activeToplevel?.wayland ?? null
+                captureSource: Hyprland.activeClient ? ToplevelManager.activeToplevel : null
                 live: visible
 
                 constraintSize.width: Config.bar.sizes.windowPreviewSize

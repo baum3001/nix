@@ -1,5 +1,3 @@
-pragma ComponentBehavior: Bound
-
 import "root:/widgets"
 import "root:/services"
 import "root:/config"
@@ -37,16 +35,8 @@ Item {
         id: base
 
         anchors.fill: parent
-        color: Colours.alpha(Colours.palette.m3surface, false)
-
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            maskEnabled: true
-            maskInverted: true
-            maskSource: mask
-            maskThresholdMin: 0.5
-            maskSpreadAtMin: 1
-        }
+        color: Colours.alpha(Config.border.colour, false)
+        visible: false
     }
 
     Item {
@@ -69,6 +59,16 @@ Item {
         }
     }
 
+    MultiEffect {
+        anchors.fill: parent
+        source: base
+        maskEnabled: true
+        maskInverted: true
+        maskSource: mask
+        maskThresholdMin: 0.5
+        maskSpreadAtMin: 1
+    }
+
     Shape {
         anchors.fill: parent
         anchors.margins: Math.floor(innerMask.anchors.margins)
@@ -86,7 +86,7 @@ Item {
             readonly property real roundingY: flatten ? height / 2 : rounding
 
             strokeWidth: -1
-            fillColor: Colours.palette.m3surface
+            fillColor: Config.border.colour
 
             startX: (innerMask.width - width) / 2 - rounding
 
@@ -153,7 +153,7 @@ Item {
             readonly property real roundingY: flatten ? height / 2 : rounding
 
             strokeWidth: -1
-            fillColor: Colours.palette.m3surface
+            fillColor: Config.border.colour
 
             startX: (innerMask.width - width) / 2 - rounding
             startY: Math.ceil(innerMask.height)
@@ -221,7 +221,7 @@ Item {
             readonly property real roundingY: height < rounding * 2 ? height / 2 : rounding
 
             strokeWidth: -1
-            fillColor: Colours.palette.m3surface
+            fillColor: Config.border.colour
 
             startY: Math.ceil(innerMask.height) - height - roundingY
 
@@ -286,7 +286,7 @@ Item {
             readonly property real roundingY: height < rounding * 2 ? height / 2 : rounding
 
             strokeWidth: -1
-            fillColor: root.isNormal ? Colours.palette.m3surface : "transparent"
+            fillColor: root.isNormal ? Config.border.colour : "transparent"
 
             startX: root.isLarge ? 0 : Math.ceil(innerMask.width)
             startY: root.isLarge ? height + roundingY : Math.ceil(innerMask.height) - height - roundingY
@@ -351,7 +351,7 @@ Item {
             readonly property real roundingY: height < rounding * 2 ? height / 2 : rounding
 
             strokeWidth: -1
-            fillColor: root.isLarge ? Colours.palette.m3surface : "transparent"
+            fillColor: root.isLarge ? Config.border.colour : "transparent"
 
             startX: Math.ceil(innerMask.width)
             startY: Math.ceil(innerMask.height) - height - rounding
@@ -416,7 +416,7 @@ Item {
             readonly property real roundingY: height < rounding * 2 ? height / 2 : rounding
 
             strokeWidth: -1
-            fillColor: root.isLarge ? Colours.palette.m3surface : "transparent"
+            fillColor: root.isLarge ? Config.border.colour : "transparent"
 
             startX: Math.ceil(innerMask.width)
             startY: height + rounding

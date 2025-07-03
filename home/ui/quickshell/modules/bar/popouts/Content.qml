@@ -9,15 +9,15 @@ import QtQuick
 Item {
     id: root
 
-    required property Item wrapper
     required property ShellScreen screen
-    required property string currentName
-    required property real currentCenter
-    required property bool hasCurrent
+
+    property string currentName
+    property real currentCenter
+    property bool hasCurrent
 
     anchors.centerIn: parent
 
-    implicitWidth: (content.children.find(c => c.shouldBeActive)?.implicitWidth ?? 0) + Appearance.padding.large * 2
+    implicitWidth: hasCurrent ? (content.children.find(c => c.shouldBeActive)?.implicitWidth ?? 0) + Appearance.padding.large * 2 : 0
     implicitHeight: (content.children.find(c => c.shouldBeActive)?.implicitHeight ?? 0) + Appearance.padding.large * 2
 
     Item {
@@ -26,11 +26,16 @@ Item {
         anchors.fill: parent
         anchors.margins: Appearance.padding.large
 
+        clip: true
+
         Popout {
             name: "activewindow"
-            sourceComponent: ActiveWindow {
-                wrapper: root.wrapper
-            }
+            source: "ActiveWindow.qml"
+        }
+
+        Popout {
+            name: "notificationsstatus"
+            source: "NotificationsStatus.qml"
         }
 
         Popout {
@@ -82,6 +87,30 @@ Item {
                     }
                 }
             }
+        }
+    }
+
+    Behavior on implicitWidth {
+        Anim {
+            easing.bezierCurve: Appearance.anim.curves.emphasized
+        }
+    }
+
+    Behavior on implicitHeight {
+        enabled: root.implicitWidth > 0
+
+        Anim {
+            easing.bezierCurve: Appearance.anim.curves.emphasized
+        }
+    }
+
+    Behavior on currentCenter {
+        enabled: root.implicitWidth > 0
+
+        NumberAnimation {
+            duration: Appearance.anim.durations.normal
+            easing.type: Easing.BezierSpline
+            easing.bezierCurve: Appearance.anim.curves.emphasized
         }
     }
 

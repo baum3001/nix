@@ -11,7 +11,10 @@ Item {
 
     implicitWidth: icon.implicitWidth + info.implicitWidth + info.anchors.leftMargin
 
-    Component.onCompleted: Weather.reload()
+    onVisibleChanged: {
+        if (visible)
+            Weather.reload();
+    }
 
     MaterialIcon {
         id: icon
@@ -20,9 +23,12 @@ Item {
         anchors.left: parent.left
 
         animate: true
-        text: Weather.icon || "cloud_alert"
+        text: Weather.icon || "cloud_off"
         color: Colours.palette.m3secondary
         font.pointSize: Appearance.font.size.extraLarge * 2
+        font.variableAxes: ({
+                opsz: Appearance.font.size.extraLarge * 1.2
+            })
     }
 
     Column {

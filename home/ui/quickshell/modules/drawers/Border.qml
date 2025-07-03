@@ -1,8 +1,7 @@
-pragma ComponentBehavior: Bound
-
 import "root:/widgets"
 import "root:/services"
 import "root:/config"
+import Quickshell
 import QtQuick
 import QtQuick.Effects
 
@@ -14,17 +13,11 @@ Item {
     anchors.fill: parent
 
     StyledRect {
-        anchors.fill: parent
-        color: Colours.alpha(Colours.palette.m3surface, false)
+        id: rect
 
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            maskSource: mask
-            maskEnabled: true
-            maskInverted: true
-            maskThresholdMin: 0.5
-            maskSpreadAtMin: 1
-        }
+        anchors.fill: parent
+        color: Colours.alpha(Config.border.colour, false)
+        visible: false
     }
 
     Item {
@@ -40,5 +33,15 @@ Item {
             anchors.leftMargin: root.bar.implicitWidth
             radius: Config.border.rounding
         }
+    }
+
+    MultiEffect {
+        anchors.fill: parent
+        maskEnabled: true
+        maskInverted: true
+        maskSource: mask
+        source: rect
+        maskThresholdMin: 0.5
+        maskSpreadAtMin: 1
     }
 }

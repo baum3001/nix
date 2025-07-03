@@ -15,6 +15,7 @@ import QtQuick.Layouts
 Item {
     id: root
 
+    required property bool shouldUpdate
     required property PersistentProperties visibilities
 
     property real playerProgress: {
@@ -40,7 +41,7 @@ Item {
     }
 
     Timer {
-        running: Players.active?.isPlaying ?? false
+        running: root.shouldUpdate && (Players.active?.isPlaying ?? false)
         interval: Config.dashboard.mediaUpdateInterval
         triggeredOnStart: true
         repeat: true
@@ -51,7 +52,8 @@ Item {
         target: Cava
 
         function onValuesChanged(): void {
-            visualiser.requestPaint();
+            if (root.shouldUpdate)
+                visualiser.requestPaint();
         }
     }
 
@@ -108,10 +110,6 @@ Item {
                 easing.bezierCurve: Appearance.anim.curves.standard
             }
         }
-
-        Ref {
-            service: Cava
-        }
     }
 
     StyledClippingRect {
@@ -130,7 +128,6 @@ Item {
         MaterialIcon {
             anchors.centerIn: parent
 
-            grade: 200
             text: "art_track"
             color: Colours.palette.m3onSurfaceVariant
             font.pointSize: (parent.width * 0.4) || 1
@@ -402,7 +399,7 @@ Item {
                                     IconImage {
                                         id: playerIcon
 
-                                        source: Icons.getAppIcon(player.modelData.identity, "image-missing")
+                                        source: Icons.getAppIcon(player.modelData.identity, "nix-snowflake")
                                         implicitSize: Math.round(identity.implicitHeight * 0.9)
                                     }
 
@@ -495,7 +492,7 @@ Item {
             }
 
             Control {
-                icon: "delete"
+                icon: "close"
                 canUse: Players.active?.canQuit ?? false
                 fontSize: Appearance.font.size.larger
                 padding: Appearance.padding.small
@@ -525,9 +522,9 @@ Item {
             width: visualiser.width * 0.75
             height: visualiser.height * 0.75
 
-            playing: Players.active?.isPlaying ?? false
-            speed: BeatDetector.bpm / 300
-            source: Paths.expandTilde(Config.paths.mediaGif)
+            playing: (Players.active?.isPlaying ?? false)
+            speed: 1
+            source: "root:/assets/synth_circle.gif"
             asynchronous: true
             fillMode: AnimatedImage.PreserveAspectFit
         }

@@ -2,58 +2,40 @@ import "root:/widgets"
 import "root:/services"
 import "root:/config"
 import QtQuick
-import QtQuick.Layouts
 
-RowLayout {
+Row {
     id: root
 
-    readonly property int padding: Appearance.padding.large
-
     spacing: Appearance.spacing.large * 3
+    padding: Appearance.padding.large
+    leftPadding: padding * 2
+    rightPadding: padding * 3
 
-    Ref {
-        service: SystemUsage
+    Resource {
+        value1: SystemUsage.gpuPerc
+        value2: Math.min(1, SystemUsage.gpuTemp / 90)
+
+        label1: `${Math.round(SystemUsage.gpuPerc * 100)}%`
+        label2: `${Math.ceil(SystemUsage.gpuTemp)}°C`
+
+        sublabel1: qsTr("GPU")
+        sublabel2: qsTr("Temp")
     }
 
     Resource {
-        Layout.alignment: Qt.AlignVCenter
-        Layout.topMargin: root.padding
-        Layout.bottomMargin: root.padding
-        Layout.leftMargin: root.padding * 2
-
-        value1: Math.min(1, SystemUsage.gpuTemp / 90)
-        value2: SystemUsage.gpuPerc
-
-        label1: `${Math.ceil(SystemUsage.gpuTemp)}°C`
-        label2: `${Math.round(SystemUsage.gpuPerc * 100)}%`
-
-        sublabel1: qsTr("GPU temp")
-        sublabel2: qsTr("Usage")
-    }
-
-    Resource {
-        Layout.alignment: Qt.AlignVCenter
-        Layout.topMargin: root.padding
-        Layout.bottomMargin: root.padding
-
         primary: true
 
-        value1: Math.min(1, SystemUsage.cpuTemp / 90)
-        value2: SystemUsage.cpuPerc
+        value1: SystemUsage.cpuPerc
+        value2: Math.min(1, SystemUsage.cpuTemp / 90)
 
-        label1: `${Math.ceil(SystemUsage.cpuTemp)}°C`
-        label2: `${Math.round(SystemUsage.cpuPerc * 100)}%`
+        label1: `${Math.round(SystemUsage.cpuPerc * 100)}%`
+        label2: `${Math.ceil(SystemUsage.cpuTemp)}°C`
 
-        sublabel1: qsTr("CPU temp")
-        sublabel2: qsTr("Usage")
+        sublabel1: qsTr("CPU")
+        sublabel2: qsTr("Temp")
     }
 
     Resource {
-        Layout.alignment: Qt.AlignVCenter
-        Layout.topMargin: root.padding
-        Layout.bottomMargin: root.padding
-        Layout.rightMargin: root.padding * 3
-
         value1: SystemUsage.memPerc
         value2: SystemUsage.storagePerc
 
@@ -89,6 +71,8 @@ RowLayout {
         property color fg2: Colours.palette.m3secondary
         property color bg1: Colours.palette.m3primaryContainer
         property color bg2: Colours.palette.m3secondaryContainer
+
+        anchors.verticalCenter: parent.verticalCenter
 
         implicitWidth: Config.dashboard.sizes.resourceSize * primaryMult
         implicitHeight: Config.dashboard.sizes.resourceSize * primaryMult

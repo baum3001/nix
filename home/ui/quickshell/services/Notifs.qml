@@ -13,6 +13,8 @@ Singleton {
 
     readonly property list<Notif> list: []
     readonly property list<Notif> popups: list.filter(n => n.popup)
+    property list<Notification> pending: []
+    property bool notificationsEnabled: true
 
     NotificationServer {
         id: server
@@ -26,11 +28,33 @@ Singleton {
 
         onNotification: notif => {
             notif.tracked = true;
+            if (root.notificationsEnabled) {
+                root.list.push(notifComp.createObject(root, {
+                    popup: true,
+                    notification: notif
+                }));
+            } else {
+                root.pending.push(notif);
+            }
+        }
+    }
 
-            root.list.push(notifComp.createObject(root, {
-                popup: true,
-                notification: notif
-            }));
+    function toggleNotifications(newState) {
+        if (root.notificationsEnabled === newState)
+            return;
+        if (!newState) {
+            for (const notif of root.list)
+                notif.popup = false;
+        }
+        root.notificationsEnabled = newState;
+        if (newState) {
+            for (const notif of root.pending) {
+                root.list.push(notifComp.createObject(root, {
+                    popup: true,
+                    notification: notif
+                }));
+            }
+            root.pending = [];
         }
     }
 
@@ -41,6 +65,12 @@ Singleton {
             for (const notif of root.list)
                 notif.popup = false;
         }
+    }
+
+    CustomShortcut {
+        name: "toggleNotifs"
+        description: "Toggle notifications enabled/disabled"
+        onPressed: root.toggleNotifications(!root.notificationsEnabled);
     }
 
     IpcHandler {
@@ -75,7 +105,7 @@ Singleton {
         readonly property string appIcon: notification.appIcon
         readonly property string appName: notification.appName
         readonly property string image: notification.image
-        readonly property int urgency: notification.urgency
+        readonly property var urgency: notification.urgency // Idk why NotificationUrgency doesn't work
         readonly property list<NotificationAction> actions: notification.actions
 
         readonly property Timer timer: Timer {

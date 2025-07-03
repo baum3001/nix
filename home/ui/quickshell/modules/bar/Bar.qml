@@ -22,6 +22,9 @@ Item {
         const th = tray.implicitHeight;
         const trayItems = tray.items;
 
+        const no = statusIconsInner.notificationsstatus;
+        const noy = statusIcons.y + statusIconsInner.y + no.y - spacing / 2;
+
         const n = statusIconsInner.network;
         const ny = statusIcons.y + statusIconsInner.y + n.y - spacing / 2;
 
@@ -31,16 +34,16 @@ Item {
         const b = statusIconsInner.battery;
         const by = statusIcons.y + statusIconsInner.y + b.y - spacing / 2;
 
-        if (y >= awy && y <= awy + aw.implicitHeight) {
-            popouts.currentName = "activewindow";
-            popouts.currentCenter = Qt.binding(() => activeWindow.y + aw.y + aw.implicitHeight / 2);
-            popouts.hasCurrent = true;
-        } else if (y > ty && y < ty + th) {
+        if (y > ty && y < ty + th) {
             const index = Math.floor(((y - ty) / th) * trayItems.count);
             const item = trayItems.itemAt(index);
 
             popouts.currentName = `traymenu${index}`;
             popouts.currentCenter = Qt.binding(() => tray.y + item.y + item.implicitHeight / 2);
+            popouts.hasCurrent = true;
+        } else if (y >= noy && y <= noy + no.implicitHeight + spacing) {
+            popouts.currentName = "notificationsstatus";
+            popouts.currentCenter = Qt.binding(() => statusIcons.y + statusIconsInner.y + no.y + no.implicitHeight / 2);
             popouts.hasCurrent = true;
         } else if (y >= ny && y <= ny + n.implicitHeight + spacing) {
             popouts.currentName = "network";
@@ -101,7 +104,7 @@ Item {
                 anchors.rightMargin: -Config.border.thickness
 
                 onWheel: event => {
-                    const activeWs = Hyprland.activeToplevel?.workspace?.name;
+                    const activeWs = Hyprland.activeClient?.workspace?.name;
                     if (activeWs?.startsWith("special:"))
                         Hyprland.dispatch(`togglespecialworkspace ${activeWs.slice(8)}`);
                     else if (event.angleDelta.y < 0 || Hyprland.activeWsId > 1)

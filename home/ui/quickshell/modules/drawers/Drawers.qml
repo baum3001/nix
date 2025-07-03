@@ -86,13 +86,10 @@ Variants {
             }
 
             Item {
+                id: background
+
                 anchors.fill: parent
-                layer.enabled: true
-                layer.effect: MultiEffect {
-                    shadowEnabled: true
-                    blurMax: 15
-                    shadowColor: Qt.alpha(Colours.palette.m3shadow, 0.7)
-                }
+                visible: false
 
                 Border {
                     bar: bar
@@ -102,6 +99,14 @@ Variants {
                     panels: panels
                     bar: bar
                 }
+            }
+
+            MultiEffect {
+                anchors.fill: source
+                source: background
+                shadowEnabled: true
+                blurMax: 15
+                shadowColor: Qt.alpha(Colours.palette.m3shadow, 0.7)
             }
 
             PersistentProperties {

@@ -1,5 +1,3 @@
-pragma ComponentBehavior: Bound
-
 import "root:/widgets"
 import "root:/services"
 import "root:/config"
@@ -101,7 +99,6 @@ WrapperItem {
             text: parent.icon
             color: Colours.palette.m3onSecondaryContainer
             font.pointSize: (parent.width * 0.4) || 1
-            font.weight: handler.hovered ? 500 : 400
         }
 
         Behavior on radius {

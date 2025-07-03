@@ -1,10 +1,10 @@
 import Quickshell.Io
 
 JsonObject {
-    property int maxShown: 8
+    property int maxShown: 6
     property int maxWallpapers: 9 // Warning: even numbers look bad
-    property string actionPrefix: ">"
-    property bool enableDangerousActions: false // Allow actions that can cause losing data, like shutdown, reboot and logout
+    property string actionPrefix: "."
+    property bool enableDangerousActions: true // Allow actions that can cause losing data, like shutdown, reboot and logout
 
     property JsonObject sizes: JsonObject {
         property int itemWidth: 600

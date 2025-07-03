@@ -1,12 +1,16 @@
 import "root:/widgets"
 import "root:/services"
 import "root:/config"
-import "root:/utils"
+import Quickshell
+import Quickshell.Io
+import Quickshell.Widgets
 import QtQuick
 import QtQuick.Shapes
 
 Item {
     id: root
+
+    required property bool shouldUpdate
 
     property real playerProgress: {
         const active = Players.active;
@@ -26,7 +30,7 @@ Item {
     }
 
     Timer {
-        running: Players.active?.isPlaying ?? false
+        running: root.shouldUpdate && (Players.active?.isPlaying ?? false)
         interval: Config.dashboard.mediaUpdateInterval
         triggeredOnStart: true
         repeat: true
@@ -100,7 +104,6 @@ Item {
         MaterialIcon {
             anchors.centerIn: parent
 
-            grade: 200
             text: "art_track"
             color: Colours.palette.m3onSurfaceVariant
             font.pointSize: (parent.width * 0.4) || 1
@@ -217,9 +220,9 @@ Item {
         anchors.bottomMargin: Appearance.padding.large
         anchors.margins: Appearance.padding.large * 2
 
-        playing: Players.active?.isPlaying ?? false
-        speed: BeatDetector.bpm / 300
-        source: Paths.expandTilde(Config.paths.mediaGif)
+        playing: (Players.active?.isPlaying ?? false)
+        speed: 1
+        source: "root:/assets/synth_circle.gif"
         asynchronous: true
         fillMode: AnimatedImage.PreserveAspectFit
     }

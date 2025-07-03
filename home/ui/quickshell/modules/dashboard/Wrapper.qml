@@ -1,5 +1,3 @@
-pragma ComponentBehavior: Bound
-
 import QtQuick
 import Quickshell
 import "root:/config"
@@ -8,9 +6,6 @@ Item {
     id: root
 
     required property PersistentProperties visibilities
-    readonly property PersistentProperties state: PersistentProperties {
-        property int currentTab
-    }
 
     visible: height > 0
     implicitHeight: 0
@@ -52,17 +47,9 @@ Item {
         }
     ]
 
-    Loader {
+    Content {
         id: content
 
-        Component.onCompleted: active = Qt.binding(() => root.visibilities.dashboard || root.visible)
-
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-
-        sourceComponent: Content {
-            visibilities: root.visibilities
-            state: root.state
-        }
+        visibilities: root.visibilities
     }
 }

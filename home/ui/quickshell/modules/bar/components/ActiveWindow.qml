@@ -60,7 +60,7 @@ Item {
             id: icon
 
             animate: true
-            text: Icons.getAppCategoryIcon(Hyprland.activeToplevel?.lastIpcObject.class, "desktop_windows")
+            text: Icons.getAppCategoryIcon(Hyprland.activeClient?.wmClass, "desktop_windows")
             color: root.colour
 
             anchors.horizontalCenter: parent.horizontalCenter
@@ -77,7 +77,7 @@ Item {
         TextMetrics {
             id: metrics
 
-            text: Hyprland.activeToplevel?.title ?? qsTr("Desktop")
+            text: Hyprland.activeClient?.title ?? qsTr("Desktop")
             font.pointSize: Appearance.font.size.smaller
             font.family: Appearance.font.family.mono
             elide: Qt.ElideRight
@@ -121,9 +121,9 @@ Item {
         opacity: child.current === this ? 1 : 0
 
         transform: Rotation {
-            angle: 90
-            origin.x: text.implicitHeight / 2
-            origin.y: text.implicitHeight / 2
+            angle: 270
+            origin.x: text.implicitWidth / 2
+            origin.y: text.implicitWidth / 2
         }
 
         width: implicitHeight

@@ -13,17 +13,15 @@ ShapePath {
     readonly property real roundingX: flatten ? wrapper.width / 2 : rounding
     property real ibr: invertBottomRounding ? -1 : 1
 
-    property real sideRounding: startX > 0 ? -1 : 1
-
     strokeWidth: -1
-    fillColor: Colours.palette.m3surface
+    fillColor: Config.border.colour
 
     PathArc {
         relativeX: root.roundingX
-        relativeY: root.rounding * root.sideRounding
+        relativeY: root.rounding
         radiusX: Math.min(root.rounding, root.wrapper.width)
         radiusY: root.rounding
-        direction: root.sideRounding < 0 ? PathArc.Clockwise : PathArc.Counterclockwise
+        direction: PathArc.Counterclockwise
     }
     PathLine {
         relativeX: root.wrapper.width - root.roundingX * 2
@@ -52,10 +50,10 @@ ShapePath {
     }
     PathArc {
         relativeX: -root.roundingX
-        relativeY: root.rounding * root.sideRounding
+        relativeY: root.rounding
         radiusX: Math.min(root.rounding, root.wrapper.width)
         radiusY: root.rounding
-        direction: root.sideRounding < 0 ? PathArc.Clockwise : PathArc.Counterclockwise
+        direction: PathArc.Counterclockwise
     }
 
     Behavior on fillColor {
@@ -67,14 +65,6 @@ ShapePath {
     }
 
     Behavior on ibr {
-        NumberAnimation {
-            duration: Appearance.anim.durations.normal
-            easing.type: Easing.BezierSpline
-            easing.bezierCurve: Appearance.anim.curves.standard
-        }
-    }
-
-    Behavior on sideRounding {
         NumberAnimation {
             duration: Appearance.anim.durations.normal
             easing.type: Easing.BezierSpline
