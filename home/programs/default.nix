@@ -51,6 +51,13 @@
         arRPC = true;
         disableMinSize = true;
         hardwareAcceleration = true;
+        plugins = {
+          MessageLogger = {
+            enabled = true;
+            ignoreSelf = true;
+          };
+          FakeNitro.enabled = true;
+        };
       };
     };
     kitty = { 
