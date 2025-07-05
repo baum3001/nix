@@ -27,6 +27,7 @@
     "steam"
     "steam-original"
     "steam-unwrapped"
+    "spotify"
     "steam-run"
   ];
   fonts.packages = with pkgs; [
