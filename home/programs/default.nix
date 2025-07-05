@@ -4,6 +4,7 @@
 
     imports = [
       ./librewolf.nix
+      ./spicetify.nix
   ];
   programs = {
     vscode = {
