@@ -47,6 +47,7 @@ Row {
             icon: Icons.osIcon
             text: Icons.osName
             colour: Colours.palette.m3primary
+            materialIcon: false
         }
 
         InfoLine {
@@ -87,6 +88,7 @@ Row {
         required property string icon
         required property string text
         required property color colour
+        property bool materialIcon: true
 
         implicitWidth: icon.implicitWidth + text.width + text.anchors.leftMargin
         implicitHeight: Math.max(icon.implicitHeight, text.implicitHeight)
@@ -100,9 +102,7 @@ Row {
             text: line.icon
             color: line.colour
             font.pointSize: Appearance.font.size.normal
-            font.variableAxes: ({
-                    FILL: 1
-                })
+            font.family: line.materialIcon ? Appearance.font.family.material : Appearance.font.family.sans
         }
 
         StyledText {
