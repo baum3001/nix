@@ -41,8 +41,8 @@
 
       hostDefs = [
         {
-          name = "nix-highspec";
-          path = ./hosts/highspec;
+          name = "nix-heizlüfter";
+          path = ./hosts/nix-heizlüfter;
         }
         {
           name = "nix-surface";
