@@ -19,8 +19,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    illogical-impulse.url = "github:bigsaltyfishes/end-4-dots";
-    illogical-impulse.inputs.nixpkgs.follows = "nixpkgs";
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
