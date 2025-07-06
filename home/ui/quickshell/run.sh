@@ -11,4 +11,11 @@ PROCESS='QProcess: Destroyed while process'
 # Image cache warning
 CACHE="Cannot open: file://$XDG_CACHE_HOME/caelestia/imagecache/"
 
+if test -f ".local/state/caelestia/wallpaper/path.txt"
+then
+    echo "ok"
+else
+    echo "/bubatz" > ~/.local/state/caelestia/wallpaper/path.txt
+fi
+
 qs -p "$(dirname "$0")" --log-rules "$DBUS;$NOTIFS;$SNI" | grep -vF -e "$PROCESS" -e "$CACHE"
