@@ -103,6 +103,7 @@
     feishin
     gotop
     signal-desktop
+    filezilla
     altus
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
