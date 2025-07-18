@@ -8,7 +8,7 @@ in
     ./hyprland.nix
     ./programs
     inputs.catppuccin.homeModules.catppuccin
-    "${toString hostPath}/graphics.nix"
+    "${toString hostPath}/home"
   ];
   
 

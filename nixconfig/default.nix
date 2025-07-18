@@ -76,12 +76,7 @@
 
     ]; 
     packages = with pkgs; [
-      tree
-      fractal
-      gimp3
-      fastfetch
-      jellyfin-tui
-      inputs.quickshell.packages.${pkgs.system}.default
+      wget
     ];
   };
 
@@ -91,11 +86,7 @@
 
   environment.systemPackages = with pkgs; [
     wget
-    bitwarden-desktop
-    wineWowPackages.staging
-    inputs.caelestia-cli.packages.${pkgs.system}.default
-    scrcpy
-    kdePackages.partitionmanager
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

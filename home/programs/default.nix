@@ -104,11 +104,20 @@
     gotop
     signal-desktop
     filezilla
+    tree
+    fractal
+    gimp3
+    fastfetch
+    jellyfin-tui
     altus
+    scrcpy
+    bitwarden-desktop
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
 
     # quickshell
+    inputs.quickshell.packages.${pkgs.system}.default
+    inputs.caelestia-cli.packages.${pkgs.system}.default
     hyprpaper
     imagemagick
     wl-clipboard
