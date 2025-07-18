@@ -4,6 +4,7 @@
   imports =
     [ 
       ./surface.nix
+      ./locale.nix
     ];    
 
   boot = {
