@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware.nix
       ./locale.nix
+      ../../modules/steam.nix
     ];
 
   # Bootloader.
