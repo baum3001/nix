@@ -26,7 +26,7 @@
 
     };
 
-  # keybindss
+  # keybinds
 
     "$mod" = "SUPER";
     "$terminal" = "kitty";
@@ -35,11 +35,15 @@
 
 
     bind = [
+
+    # applications
       "$mod, F, exec, librewolf"
       "$mod, Q, exec, $terminal"
       "$mod, M, exit,"
       "$mod, R, exec, $menu"
       "$mod, C, killactive,"
+
+      # caelestia
 
       "$mod, D, global, caelestia:showall"
       "Ctrl+Alt, Delete, global, caelestia:session"
@@ -47,6 +51,8 @@
       "SUPER+Shift, S, global, caelestia:screenshotFreeze"
       "$mod ,SPACE , global, caelestia:launcher"
       
+      # general hyprland
+
       "$mod, left, movefocus, l"
       "$mod, down, movefocus, d"
       "$mod, up, movefocus, u"
@@ -79,18 +85,24 @@
 
     ];
 
-    bindel = [
-      ",XF86AudioRaiseVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume=+5"
-      ",XF86AudioLowerVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume=-5"
-      ",XF86MonBrightnessDown, exec, ${pkgs.swayosd}/bin/swayosd-client --brightness lower"
-      ",XF86MonBrightnessUp, exec, ${pkgs.swayosd}/bin/swayosd-client --brightness raise"
+    bindl = [
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    ];
+
+    # audio and brightness
+
+    bindle = [
+      ",XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+"
+      ",XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-"
+      ",XF86MonBrightnessDown, global, caelestia:brightnessDown"
+      ",XF86MonBrightnessUp, global, caelestia:brightnessUp"
     ];
 
   # exec
     exec-once = [
       "systemctl --user start hyprpolkitagent"
       "systemctl --user start swayosd"
-      "bash ~/etc/nixos/home/ui/quickshell/run.sh"
+      "caelestia shell -d"
     ];
     general = {
       gaps_in = "3";

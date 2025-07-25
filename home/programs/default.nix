@@ -5,6 +5,7 @@
     imports = [
       ./librewolf.nix
       ./spicetify.nix
+      ./shell.nix
   ];
   programs = {
     vscode = {
@@ -115,66 +116,12 @@
     kdePackages.dolphin
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
 
-    # quickshell
-    inputs.quickshell.packages.${pkgs.system}.default
-    inputs.caelestia-cli.packages.${pkgs.system}.default
-    hyprpaper
-    imagemagick
-    wl-clipboard
-    fuzzel
-    socat
-    foot
-    jq
-    python3
-    python3Packages.materialyoucolor
-    grim
-    wayfreeze
-    wl-screenrec
-    inputs.astal.packages.${pkgs.system}.default
-    gtk3
-    
-    # Additional dependencies
-    lm_sensors
-    curl
-    material-symbols
-    nerd-fonts.jetbrains-mono
-    ibm-plex
-    fd
-    python3Packages.pyaudio
-    python3Packages.numpy
-    cava
-    networkmanager
-    bluez
-    ddcutil
-    brightnessctl
   ];
 
   services = {
     gnome-keyring.enable = true;
     hyprpolkitagent.enable = true;
-    dunst = {
-      enable = true;
-      settings = {
-        global = {
-          width = 300;
-          height = 300;
-          offset = "30x50";
-          origin = "top-right";
-          transparency = 10;
-          frame_color = "#eceff1";
-          font = "Droid Sans 9";
-        };
-        urgency_normal = {
-          background = "#37474f";
-          foreground = "#eceff1";
-          timeout = 10;
-        };
-      };
-
-    };
-    blueman-applet = {
-      enable = true;
-    };
+    
     udiskie = {
       enable = true;
       settings = {
@@ -185,9 +132,6 @@
             file_manager = "${pkgs.kdePackages.dolphin}/bin/dolphin/";
         };
       };
-    };
-    swayosd = {
-      enable = true;
     };
   };
 

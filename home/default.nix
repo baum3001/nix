@@ -7,6 +7,7 @@ in
   imports = [
     ./hyprland.nix
     ./programs
+    ../homeModules/caelestia.nix
     inputs.catppuccin.homeModules.catppuccin
     "${toString hostPath}/home"
   ];
