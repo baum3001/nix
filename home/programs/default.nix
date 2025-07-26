@@ -67,6 +67,7 @@
       settings = {
         confirm_os_window_close = 0;
         font_size = 13;
+        font_family = "FiraCode Nerd Font";
         shell = "fish";
         dynamic_background_opacity = true;
         enable_audio_bell = false;
@@ -123,9 +124,6 @@
 
   fonts.fontconfig.enable = true;
 
-  home.file.".config/quickshell" = {
-    source = config.lib.file.mkOutOfStoreSymlink "/etc/nixos/home/ui/quickshell/config";
-  };
 
 
   home.packages = with pkgs; [
@@ -145,6 +143,7 @@
     scrcpy
     bitwarden-desktop
     kdePackages.dolphin
+    nerd-fonts.fira-code
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
 
   ];
