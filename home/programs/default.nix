@@ -20,7 +20,7 @@
           bbenoist.nix
         ];
         userSettings = {
-          "workbench.iconTheme" = "material-icon-theme";
+          
           "workbench.colorTheme" = "Catppuccin Mocha";
           "editor.fontFamily" = "ComicCodeLigatures Nerd Font";
           "editor.formatOnSave" = true;

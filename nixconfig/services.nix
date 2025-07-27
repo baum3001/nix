@@ -37,9 +37,6 @@
     libinput = {
       enable = true;
     };
-    openssh = {
-      enable = true; 
-    };
     displayManager.ly = {
       enable = true;
     };

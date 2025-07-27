@@ -10,6 +10,8 @@
       ./hardware.nix
       ./locale.nix
       ../../modules/steam.nix
+      ../../modules/openssh.nix
+      ../../users/baum
     ];
 
   # Bootloader.
