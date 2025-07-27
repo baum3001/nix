@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     catppuccin.url = "github:catppuccin/nix";
+    nari.url = "github:sodiboo/nixos-razer-nari";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -82,6 +83,7 @@
               host.path
               inputs.sops-nix.nixosModules.sops
               ./nixconfig
+              inputs.nari.nixosModules.default
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager = {
