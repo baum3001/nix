@@ -62,6 +62,10 @@
           name = "nix-desktop";
           path = ./hosts/desktop;
         }
+        {
+          name = "nix-t430";
+          path = ./hosts/nix-t430;
+        }
       ];
     in {
       nixosConfigurations = lib.listToAttrs (map (host:
