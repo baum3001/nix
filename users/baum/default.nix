@@ -2,5 +2,6 @@
 {
   imports = [
     ./sshkeys.nix
+    ./packages.nix
   ];
 }
