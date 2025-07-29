@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./locale.nix
       ../../users/baum
+      ../../modules/steam.nix
     ];
 
   # Bootloader.
