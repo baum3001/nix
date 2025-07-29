@@ -138,7 +138,7 @@
     fractal
     gimp3
     fastfetch
-    jellyfin-tui
+    owncloud-client
     altus
     scrcpy
     bitwarden-desktop
