@@ -138,7 +138,7 @@
     fractal
     gimp3
     fastfetch
-    owncloud-client
+    nextcloud-client
     altus
     scrcpy
     bitwarden-desktop
