@@ -128,20 +128,11 @@
 
   home.packages = with pkgs; [
     gcr
-    qpwgraph
+    killall
     pavucontrol
-    feishin
     gotop
-    signal-desktop
-    filezilla
     tree
-    fractal
-    gimp3
     fastfetch
-    nextcloud-client
-    altus
-    scrcpy
-    bitwarden-desktop
     kdePackages.dolphin
     nerd-fonts.fira-code
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
