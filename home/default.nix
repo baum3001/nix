@@ -3,7 +3,6 @@
 
 {
   imports = [
-    ./hyprland.nix
     ./programs
     inputs.catppuccin.homeModules.catppuccin
   ];

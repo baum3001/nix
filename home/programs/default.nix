@@ -42,10 +42,6 @@
       };
     };
   };    
-    wofi = {
-      enable = true;    
-
-    };
     
     vesktop = {
       enable = true;
