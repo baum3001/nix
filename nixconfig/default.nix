@@ -68,9 +68,16 @@
     git
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
+  # somehow putting this in the steam config doesnt work
+  # problem for later
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  "spotify"
+  "steam"
+  "steam-original"
+  "steam-unwrapped"
+  "steam-run"
+  ];
   networking.firewall = {
    # if packets are still dropped, they will show up in dmesg
    logReversePathDrops = true;

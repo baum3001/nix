@@ -47,57 +47,150 @@
   };
 
   outputs = inputs: 
-    let
-      inherit (inputs.nixpkgs) lib;
+  let
+    inherit (inputs.nixpkgs) lib;
 
-      hostDefs = [
-        {
-          name = "nix-heizluefter";
-          path = ./hosts/nix-heizluefter;
-        }
-        {
-          name = "nix-surface";
-          path = ./hosts/surface;
-        }
-        {
-          name = "nix-desktop";
-          path = ./hosts/desktop;
-        }
-        {
-          name = "nix-t430";
-          path = ./hosts/nix-t430;
-        }
-      ];
-    in {
-      nixosConfigurations = lib.listToAttrs (map (host:
-        {
-          name = host.name;
-          value = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-              configName = host.name;
+    # Define individual host configurations
+    nixosConfigurations = {
+      nix-heizluefter = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          configName = "nix-heizluefter";
+        };
+        modules = [
+          { networking.hostName = "nix-heizluefter"; }
+          ./nixconfig
+          ./hosts/nix-heizluefter
+          ./modules/locale_de.nix
+          ./modules/steam.nix
+          ./modules/openssh.nix
+          ./users/baum
+          
+          inputs.sops-nix.nixosModules.sops
+          inputs.nari.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { 
+                inherit inputs; 
+              };
+              users.baum.imports = [ 
+                ./home
+                ./homeModules/caelestia.nix
+                ./hosts/nix-heizluefter/home
+              ];
             };
-            modules = [
-              { networking.hostName = host.name; }
-              host.path
-              inputs.sops-nix.nixosModules.sops
-              ./nixconfig
-              inputs.nari.nixosModules.default
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  extraSpecialArgs = { 
-                    hostPath = host.path;
-                    inherit inputs; 
-                  };
-                  users.baum.imports = [ ./home ];
-                };
-              }
-            ];
-          };
-        }) hostDefs);
+          }
+        ];
+      };
+
+      nix-surface = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          configName = "nix-surface";
+        };
+        modules = [
+          { networking.hostName = "nix-surface"; }
+          ./nixconfig
+          ./hosts/surface
+          ./modules/locale_de.nix
+          ./modules/steam.nix
+          ./modules/openssh.nix
+          inputs.sops-nix.nixosModules.sops
+          
+          inputs.nari.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { 
+                inherit inputs; 
+              };
+              users.baum.imports = [
+                 ./home
+                 ./homeModules/caelestia.nix
+                 ./hosts/surface/home
+              ];
+            };
+          }
+        ];
+      };
+
+      nix-desktop = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          configName = "nix-desktop";
+        };
+        modules = [
+          { networking.hostName = "nix-desktop"; }
+          ./hosts/desktop
+          ./modules/locale_de.nix
+          ./modules/steam.nix
+          ./modules/openssh.nix
+          inputs.sops-nix.nixosModules.sops
+          ./nixconfig
+          inputs.nari.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { 
+                
+                inherit inputs; 
+              };
+              users.baum.imports = [
+                 ./home
+                 ./homeModules/caelestia.nix
+                 ./hosts/desktop/home
+              ];
+            };
+          }
+        ];
+      };
+
+      nix-t430 = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          configName = "nix-t430";
+        };
+        modules = [
+          { networking.hostName = "nix-t430"; }
+          ./hosts/nix-t430
+          ./modules/locale_de.nix
+          ./modules/steam.nix
+          ./modules/openssh.nix
+          inputs.sops-nix.nixosModules.sops
+          ./nixconfig
+          inputs.nari.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { 
+                
+                inherit inputs; 
+              };
+              users.baum.imports = [
+                 ./home
+                 ./homeModules/caelestia.nix
+                 ./hosts/nix-t430/home
+              ];
+            };
+          }
+        ];
+      };
     };
+  in {
+    nixosConfigurations = nixosConfigurations;
+  };
+
 }

@@ -8,10 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware.nix
-      ./locale.nix
-      ../../modules/steam.nix
-      ../../modules/openssh.nix
-      ../../users/baum
     ];
 
   # Bootloader.
@@ -32,7 +28,6 @@
     enable = true;
   };
 
-  # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {

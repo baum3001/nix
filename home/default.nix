@@ -1,15 +1,11 @@
 { inputs, config, pkgs, specialArgs, ...}:
 
 
-let hostPath = specialArgs.hostPath;
-in
 {
   imports = [
     ./hyprland.nix
     ./programs
-    ../homeModules/caelestia.nix
     inputs.catppuccin.homeModules.catppuccin
-    "${toString hostPath}/home"
   ];
   
 

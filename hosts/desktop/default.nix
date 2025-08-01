@@ -8,9 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./desktop.nix
-      ./locale.nix
-      ../../modules/steam.nix
-      ../../users/baum
+
     ];
 
   # Bootloader.
