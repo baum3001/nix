@@ -80,6 +80,7 @@
               users.baum.imports = [ 
                 ./home
                 ./homeModules/caelestia.nix
+                ./homeModules/baum-git.nix
                 ./hosts/nix-heizluefter/home
               ];
             };
@@ -114,6 +115,7 @@
               users.baum.imports = [
                  ./home
                  ./homeModules/caelestia.nix
+                 ./homeModules/baum-git.nix
                  ./hosts/surface/home
               ];
             };
@@ -148,6 +150,7 @@
               users.baum.imports = [
                  ./home
                  ./homeModules/caelestia.nix
+                 ./homeModules/baum-git.nix
                  ./hosts/desktop/home
               ];
             };
@@ -182,6 +185,7 @@
               users.baum.imports = [
                  ./home
                  ./homeModules/caelestia.nix
+                 ./homeModules/baum-git.nix
                  ./hosts/nix-t430/home
               ];
             };

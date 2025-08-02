@@ -9,23 +9,7 @@
       ./vscode.nix
       ./vesktop.nix
   ];
-  programs = {    
-    
 
-
-    git = {
-      enable = true;
-      userEmail = "sometree@sometree.dev";
-      userName = "Baum";
-      signing = {
-        signByDefault = true;
-      };
-      extraConfig.push.autoSetupRemote = true;
-    };
-    lutris = {
-      enable = true;
-    };
-  };
 
 
   
@@ -42,6 +26,8 @@
     gotop
     tree
     fastfetch
+    hyfetch
+    blahaj
     kdePackages.dolphin
     nerd-fonts.fira-code
     inputs.comic-code-ligatures-nerd-font.packages.x86_64-linux.comic-code-ligatures-nerd-font
