@@ -13,7 +13,7 @@
   #input config
     input = {
       kb_layout = "de";
-      
+      numlock_by_default = true;
       touchpad ={
         natural_scroll = "yes";
       };
