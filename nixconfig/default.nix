@@ -45,19 +45,7 @@
 
   home-manager.backupFileExtension = "backup";
 
-  users.users.baum = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "disk"
-      "adbusers"
 
-    ]; 
-    packages = with pkgs; [
-      wget
-    ];
-  };
 
   # hopefully get electron to work
 
