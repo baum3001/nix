@@ -3,7 +3,7 @@
 programs.git = {
   enable = true;
   userEmail = "teliax@proton.me";
-  userName = "Teliaxum";
+  userName = "Teliax";
   signing = {
     signByDefault = false;
   };
