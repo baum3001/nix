@@ -82,6 +82,7 @@
                 ./homeModules/caelestia.nix
                 ./homeModules/baum-git.nix
                 ./hosts/nix-heizluefter/home
+                ./users/baum/home
               ];
             };
           }
@@ -117,6 +118,7 @@
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
                  ./hosts/surface/home
+                 ./users/baum/home
               ];
             };
           }
@@ -152,6 +154,7 @@
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
                  ./hosts/desktop/home
+                 ./users/baum/home
               ];
             };
           }
@@ -187,6 +190,7 @@
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
                  ./hosts/nix-t430/home
+                 ./users/baum/home
               ];
             };
           }
@@ -223,6 +227,7 @@
                  ./homeModules/caelestia.nix
                  ./homeModules/teliax-git.nix
                  ./hosts/schlaeptop/home
+                 ./users/teliax/home
               ];
             };
           }
