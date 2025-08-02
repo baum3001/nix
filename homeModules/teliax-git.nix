@@ -5,7 +5,7 @@ programs.git = {
   userEmail = "teliax@proton.me";
   userName = "Teliax";
   signing = {
-    signByDefault = false;
+    signByDefault = true;
   };
   extraConfig.push.autoSetupRemote = true;
 };
