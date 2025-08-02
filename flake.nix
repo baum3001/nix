@@ -102,6 +102,7 @@
           ./modules/locale_de.nix
           ./modules/steam.nix
           ./modules/openssh.nix
+          ./users/baum
           inputs.sops-nix.nixosModules.sops
           
           inputs.nari.nixosModules.default
@@ -137,6 +138,7 @@
           ./modules/locale_de.nix
           ./modules/steam.nix
           ./modules/openssh.nix
+          ./users/baum
           inputs.sops-nix.nixosModules.sops
           ./nixconfig
           inputs.nari.nixosModules.default
@@ -173,6 +175,7 @@
           ./modules/locale_de.nix
           ./modules/steam.nix
           ./modules/openssh.nix
+          ./users/baum
           inputs.sops-nix.nixosModules.sops
           ./nixconfig
           inputs.nari.nixosModules.default
