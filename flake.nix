@@ -78,7 +78,7 @@
                 inherit inputs; 
               };
               users.baum.imports = [ 
-                ./home
+                ./home/baum.nix
                 ./homeModules/caelestia.nix
                 ./homeModules/baum-git.nix
                 ./hosts/nix-heizluefter/home
@@ -113,7 +113,7 @@
                 inherit inputs; 
               };
               users.baum.imports = [
-                 ./home
+                 ./home/baum.nix
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
                  ./hosts/surface/home
@@ -148,7 +148,7 @@
                 inherit inputs; 
               };
               users.baum.imports = [
-                 ./home
+                 ./home/baum.nix
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
                  ./hosts/desktop/home
@@ -183,7 +183,7 @@
                 inherit inputs; 
               };
               users.baum.imports = [
-                 ./home
+                 ./home/baum.nix
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
                  ./hosts/nix-t430/home
@@ -192,7 +192,44 @@
           }
         ];
       };
+
+
+      schlaeptop = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          configName = "schlaeptop";
+        };
+        modules = [
+          { networking.hostName = "schlaeptop"; }
+          ./hosts/schlaeptop
+          ./modules/locale_de.nix
+          ./modules/steam.nix
+          ./modules/openssh.nix
+          inputs.sops-nix.nixosModules.sops
+          ./nixconfig
+          ./users/teliax
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+
+                inherit inputs;
+              };
+              users.teliax.imports = [
+                 ./home/teliax.nix
+                 ./homeModules/caelestia.nix
+                 ./homeModules/teliax-git.nix
+                 ./hosts/schlaeptop/home
+              ];
+            };
+          }
+        ];
+      };
     };
+
   in {
     nixosConfigurations = nixosConfigurations;
   };

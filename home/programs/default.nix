@@ -4,7 +4,7 @@
 
     imports = [
       ./librewolf.nix
-      ./spicetify.nix
+     # ./spicetify.nix
       ./terminal.nix
       ./vscode.nix
       ./vesktop.nix
