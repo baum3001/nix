@@ -30,8 +30,6 @@
       "$mod, Q, exec, $terminal"
       "$mod, M, exit,"
       "$mod, C, killactive"
-      "$mod, V, codium"
-      "$mod, D, vesktop"
       
 
       # caelestia
@@ -52,7 +50,7 @@
       "$mod CTRL, down, movewindow, d"
       "$mod CTRL, up, movewindow, u"
       "$mod CTRL, right, movewindow, r"
-      "$mod, h, togglefloating"
+      "$mod, v, togglefloating"
       "$mod, s , exec, $screenshot"
       "$mod, j, togglesplit"
 
