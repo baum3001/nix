@@ -26,7 +26,7 @@
     bind = [
 
     # applications
-      "$mod, F, exec, librewolf"
+      "$mod, F, exec, firefox"
       "$mod, Q, exec, $terminal"
       "$mod, M, exit,"
       "$mod, C, killactive,"
