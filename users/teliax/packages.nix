@@ -17,5 +17,6 @@
     bitwarden-desktop
     firefox
     fluffychat
+    openvpn
   ];
 }
