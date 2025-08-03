@@ -4,6 +4,18 @@
 
   wayland.windowManager.hyprland.settings = {
 
+  #input config
+    input = {
+      kb_layout = "de";
+      numlock_by_default = true;
+      sensitivity = 0.2;
+      touchpad ={
+        natural_scroll = "yes";
+      };
+      
+
+};
+
  # keybinds
 
     "$mod" = "SUPER";

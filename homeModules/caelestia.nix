@@ -10,22 +10,11 @@
   wayland.windowManager.hyprland.settings = {
     
 
-  #input config
-    input = {
-      kb_layout = "de";
-      numlock_by_default = true;
-      touchpad ={
-        natural_scroll = "yes";
-      };
-
-    };
-
   # gesture config
     gestures = {
       workspace_swipe = true;
 
     };
-
   
   # exec
     exec-once = [
