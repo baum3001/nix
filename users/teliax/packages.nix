@@ -15,5 +15,7 @@
     altus
     scrcpy
     bitwarden-desktop
+    firefox
+    fluffychat
   ];
 }
