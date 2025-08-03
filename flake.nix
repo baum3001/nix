@@ -81,6 +81,7 @@
                 ./home/baum.nix
                 ./homeModules/caelestia.nix
                 ./homeModules/baum-git.nix
+                ./homeModule/spicetify.nix
                 ./hosts/nix-heizluefter/home
                 ./users/baum/home
               ];
@@ -118,6 +119,7 @@
                  ./home/baum.nix
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
+                 ./homeModule/spicetify.nix
                  ./hosts/surface/home
                  ./users/baum/home
               ];
@@ -155,6 +157,7 @@
                  ./home/baum.nix
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
+                 ./homeModule/spicetify.nix
                  ./hosts/desktop/home
                  ./users/baum/home
               ];
@@ -192,6 +195,7 @@
                  ./home/baum.nix
                  ./homeModules/caelestia.nix
                  ./homeModules/baum-git.nix
+                 ./homeModule/spicetify.nix
                  ./hosts/nix-t430/home
                  ./users/baum/home
               ];
