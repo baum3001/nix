@@ -30,12 +30,12 @@
       "$mod, Q, exec, $terminal"
       "$mod, M, exit,"
       "$mod, C, killactive,"
-      "$mod, V, codium"
-      "$mod, D, vesktop"
+      "$mod, V, exec, codium"
+      "$mod, D, exec, vesktop"
 
       # caelestia
 
-      "$mod, D, global, caelestia:showall"
+      #"$mod, D, global, caelestia:showall"
       "Ctrl+Alt, Delete, global, caelestia:session"
       "$mod, L, global, caelestia:lock"
       "SUPER+Shift, S, global, caelestia:screenshotFreeze"
