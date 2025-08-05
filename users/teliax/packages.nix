@@ -24,5 +24,7 @@
     firefox
     fluffychat
     openvpn
+    pcmanfm
+    unzip
   ];
 }

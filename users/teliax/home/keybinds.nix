@@ -36,6 +36,7 @@
       "$mod, C, killactive,"
       "$mod, V, exec, codium"
       "$mod, D, exec, vesktop"
+      "$mod, E, exec, pcmanfm"
 
       # caelestia
 
