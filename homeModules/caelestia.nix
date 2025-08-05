@@ -74,7 +74,7 @@
           "clearThreshold": 0.3,
           "defaultExpireTimeout": 5000,
           "expandThreshold": 20,
-          "expire": false
+          "expire": true
       },
       "osd": {
           "hideDelay": 2000
