@@ -32,9 +32,13 @@
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-24c4fd6c-1cb9-4556-8478-086fd5e67c26".device =
+  boot.initrd.luks.devices."luks-24c4fd6c-1cb9-4556-8478-086fd5e67c26" = {
+    device =
     "/dev/disk/by-uuid/24c4fd6c-1cb9-4556-8478-086fd5e67c26";
-
+    allowDiscards = true;
+    keyFileSize = 4096;
+    keyFile = "/dev/sda";
+  };
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/ADCA-A76E";
     fsType = "vfat";
