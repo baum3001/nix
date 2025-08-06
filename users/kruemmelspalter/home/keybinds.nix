@@ -6,8 +6,8 @@
 
   #input config
     input = {
-      kb_layout = "us,us";
-      kb_variant = "intl,";
+      kb_layout = "us,mk";
+      kb_variant = "altgr-intl,";
       kb_options = "grp:caps_toggle";
       numlock_by_default = true;
       touchpad = {
@@ -51,15 +51,15 @@
     ]
       ++ (
         # workspaces
-        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+        # binds $mod + [shift +] {0..9} to [move to] workspace {10, 1..9}
         builtins.concatLists (builtins.genList (i:
-            let ws = i + 1;
+           let ws = if i == 0 then 10 else i;
             in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "$mod, ${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
             ]
           )
-          9)
+          10)
       );
 
     bindm = [

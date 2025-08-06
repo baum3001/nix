@@ -23,6 +23,9 @@
       scrcpy
       bitwarden-desktop
       fluffychat
+      unzip
+      nixfmt
+      jq
     ];
   };
 }
