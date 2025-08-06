@@ -22,7 +22,7 @@
           (extension "ublock-origin" "uBlock0@raymondhill.net")
           (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
           (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
-          
+          (extension "darkreader" "addon@darkreader.org")
         ];
         # To add additional extensions, find it on addons.mozilla.org, find
         # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
