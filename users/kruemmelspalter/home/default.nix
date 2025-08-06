@@ -46,7 +46,6 @@
     userName = "Kruemmelspalter";
     userEmail = "kruemmelspalter@kruemmelspalter.org";
 
-    signing.key = "4F4A2EFAE38671C8";
     signing.signByDefault = true;
 
     extraConfig.push.autoSetupRemote = true;
