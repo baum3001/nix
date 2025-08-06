@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+
     catppuccin.url = "github:catppuccin/nix";
     nari.url = "github:sodiboo/nixos-razer-nari";
 
@@ -240,8 +242,38 @@
           }
         ];
       };
-    };
 
+      jabolkovo = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          configName = "jabolkovo";
+        };
+        modules = [
+          { networking.hostName = "jabolkovo"; }
+          ./hosts/jabolkovo
+          ./modules/locale_de.nix
+          ./nixconfig
+          ./users/kruemmelspalter
+          inputs.home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              users.kruemmelspalter.imports = [
+                ./homeModules/caelestia.nix
+                ./hosts/jabolkovo/home.nix
+                ./users/kruemmelspalter/home
+              ];
+            };
+          }
+        ];
+      };
+
+
+    };
   in {
     nixosConfigurations = nixosConfigurations;
   };
