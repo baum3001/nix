@@ -1,4 +1,4 @@
-{ inputs, config, pkgs,  ...}:
+{ inputs, config, pkgs, lib, ...}:
 {
 
 home.packages = with pkgs; [
@@ -34,7 +34,7 @@ home.packages = with pkgs; [
     enable = true;
     settings = {
       confirm_os_window_close = 0;
-      font_size = 13;
+      font_size = lib.mkDefault 13;
       font_family = "ComicCodeLigatures Nerd Font";
       shell = "fish";
       dynamic_background_opacity = true;
