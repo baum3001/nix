@@ -23,7 +23,7 @@
     bind = [
       # applications
       "$mod SHIFT, F, exec, librewolf"
-      "$mod, ENTER, exec, $terminal"
+      "$mod, RETURN, exec, $terminal"
       "$mod, M, exit,"
       "$mod, C, killactive"
 
