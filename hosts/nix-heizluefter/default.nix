@@ -25,8 +25,12 @@
 
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-e4e23706-3753-49b2-99ce-8cff841b3a02".device =
-    "/dev/disk/by-uuid/e4e23706-3753-49b2-99ce-8cff841b3a02";
+  boot.initrd.luks.devices."luks-e4e23706-3753-49b2-99ce-8cff841b3a02" = {
+    device = "/dev/disk/by-uuid/e4e23706-3753-49b2-99ce-8cff841b3a02";
+    allowDiscards = true;
+    keyFileSize = 4096;
+    keyFile = "/dev/sda";
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
