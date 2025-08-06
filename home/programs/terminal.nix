@@ -4,7 +4,7 @@
 home.packages = with pkgs; [
   fishPlugins.grc
 ];
-  programs = {
+  programs = lib.mkDefault {
     fish = {
     enable = true;
     interactiveShellInit = ''

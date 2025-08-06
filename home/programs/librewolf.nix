@@ -1,8 +1,8 @@
-{ inputs, config, pkgs, nur, ... }:
+{ inputs, config, pkgs, nur, lib, ... }:
 
 
 {
-  programs.firefox = {
+  programs.firefox = lib.mkDefault {
     enable = true;
     package = pkgs.librewolf;
     profiles.default.extensions.force = true;
