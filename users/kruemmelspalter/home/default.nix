@@ -36,9 +36,16 @@
 
   programs.kitty.settings.font_size = 10;
 
-  programs.git.extraConfig.push.autoSetupRemote = true;
+  programs.git.extraConfig = {
+    user = {
+      name = "Kruemmelspalter";
+      email = "kruemmelspalter@kruemmelspalter.org";
+      signingkey = "4F4A2EFAE38671C8";
+    };
+    push.autoSetupRemote = true;
+  };
 
   xdg.configFile."helix/config.toml".text = ''
-      theme = "catpuccin_mocha"
+      theme = "catppuccin_mocha"
     '';
 }
