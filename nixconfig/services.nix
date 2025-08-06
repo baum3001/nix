@@ -1,10 +1,15 @@
-
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   services = {
     printing = {
-        enable = true;
+      enable = true;
     };
     pipewire = {
       enable = true;

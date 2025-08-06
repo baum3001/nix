@@ -1,12 +1,16 @@
-{ inputs, config, pkgs, specialArgs, ...}:
-
+{
+  inputs,
+  config,
+  pkgs,
+  specialArgs,
+  ...
+}:
 
 {
   imports = [
     ./programs
     inputs.catppuccin.homeModules.catppuccin
   ];
-  
 
   home.username = "baum";
   home.homeDirectory = "/home/baum";

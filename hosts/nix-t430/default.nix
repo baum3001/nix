@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -22,7 +22,8 @@
 
   boot.loader.grub.enableCryptodisk = true;
 
-  boot.initrd.luks.devices."luks-d2e16093-6af1-4725-a638-7eeea49fe565".keyFile = "/boot/crypto_keyfile.bin";
+  boot.initrd.luks.devices."luks-d2e16093-6af1-4725-a638-7eeea49fe565".keyFile =
+    "/boot/crypto_keyfile.bin";
 
   nixpkgs.config.allowUnfree = true;
 

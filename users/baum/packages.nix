@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   users.users.baum.packages = with pkgs; [
     libreoffice-qt

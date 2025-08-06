@@ -38,7 +38,7 @@
 
   wayland.windowManager.hyprland.enable = true;
 
-  programs.home-manager.enable = true; 
+  programs.home-manager.enable = true;
 
   programs.kitty.settings.font_size = 10;
 
@@ -52,6 +52,6 @@
   };
 
   xdg.configFile."helix/config.toml".text = ''
-      theme = "catppuccin_mocha"
-    '';
+    theme = "catppuccin_mocha"
+  '';
 }

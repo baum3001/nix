@@ -1,36 +1,38 @@
-{ config, pkgs, inputs, lib,... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
 
   wayland.windowManager.hyprland.settings = {
 
-  #input config
+    #input config
     input = {
       kb_layout = "de";
       numlock_by_default = true;
-      touchpad ={
+      touchpad = {
         natural_scroll = "yes";
       };
 
+    };
 
-};
-
-
- # keybinds
+    # keybinds
 
     "$mod" = "SUPER";
     "$terminal" = "kitty";
     "$screenshot" = "slurp | grim -g - -  | wl-copy";
 
-
     bind = [
 
-    # applications
+      # applications
       "$mod, F, exec, librewolf"
       "$mod, Q, exec, $terminal"
       "$mod, M, exit,"
       "$mod, C, killactive"
-      
 
       # caelestia
 
@@ -39,7 +41,7 @@
       "$mod, L, global, caelestia:lock"
       "SUPER+Shift, S, global, caelestia:screenshotFreeze"
       "$mod ,SPACE , global, caelestia:launcher"
-      
+
       # general hyprland
 
       "$mod, left, movefocus, l"
@@ -55,21 +57,25 @@
       "$mod, j, togglesplit"
 
     ]
-      ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (builtins.genList (i:
-            let ws = i + 1;
-            in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          )
-          9)
-      );
+    ++ (
+      # workspaces
+      # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+      builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = i + 1;
+          in
+          [
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+          ]
+        ) 9
+      )
+    );
 
     bindm = [
-      
+
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
 
@@ -88,5 +94,5 @@
       ",XF86MonBrightnessUp, global, caelestia:brightnessUp"
     ];
 
-  };   
+  };
 }

@@ -1,7 +1,13 @@
-{ inputs, config, pkgs, specialArgs, ...}:
+{
+  inputs,
+  config,
+  pkgs,
+  specialArgs,
+  ...
+}:
 {
   wayland.windowManager.hyprland.settings.monitor = [
-    
-    ];
+
+  ];
 
 }

@@ -1,120 +1,125 @@
-{ config, pkgs, inputs, lib,... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
 
   # caelestia config
 
-  home.packages = with pkgs ;[
+  home.packages = with pkgs; [
     inputs.caelestia.packages."${pkgs.system}".default
     inputs.caelestia-cli.packages."${pkgs.system}".default
   ];
 
-  home.file.".config/caelestia/shell.json".text= ''
-  {
-      "general": {
-          "apps": {
-              "terminal": ["kitty"],
-              "audio": ["pavucontrol"]
-          }
-      },
-      "background": {
-          "enabled": true
-      },
-      "bar": {
-          "dragThreshold": 20,
-          "persistent": true,
-          "showOnHover": true,
-          "status": {
-              "showAudio": true,
-              "showBattery": true,
-              "showBluetooth": true,
-              "showKbLayout": true,
-              "showNetwork": true
-          },
-          "workspaces": {
-              "activeIndicator": true,
-              "activeLabel": "󰮯 ",
-              "activeTrail": false,
-              "label": "  ",
-              "occupiedBg": false,
-              "occupiedLabel": "󰮯 ",
-              "rounded": true,
-              "showWindows": true,
-              "shown": 5
-          }
-      },
-      "border": {
-          "rounding": 25,
-          "thickness": 10
-      },
-      "dashboard": {
-          "mediaUpdateInterval": 500,
-          "visualiserBars": 45
-      },
-      "launcher": {
-          "actionPrefix": ".",
-          "dragThreshold": 50,
-          "vimKeybinds": false,
-          "enableDangerousActions": false,
-          "maxShown": 8,
-          "maxWallpapers": 9,
-          "useFuzzy": {
-              "apps": false,
-              "actions": false,
-              "schemes": false,
-              "variants": false,
-              "wallpapers": false
-          }
-      },
-      "lock": {
-          "maxNotifs": 5
-      },
-      "notifs": {
-          "actionOnClick": false,
-          "clearThreshold": 0.3,
-          "defaultExpireTimeout": 5000,
-          "expandThreshold": 20,
-          "expire": true
-          
-      },
-      "osd": {
-          "hideDelay": 2000
-      },
-      "paths": {
-          "mediaGif": "root:/assets/bongocat.gif",
-          "sessionGif": "root:/assets/kurukuru.gif",
-          "wallpaperDir": "~/Pictures/Wallpapers"
-      },
-      "services": {
-          "audioIncrement": 0.1,
-          "weatherLocation": "",
-          "useFahrenheit": false,
-          "useTwelveHourClock": false
-      },
-      "session": {
-          "dragThreshold": 30,
-          "vimKeybinds": false,
-          "commands": {
-              "logout": ["loginctl", "terminate-user", ""],
-              "shutdown": ["systemctl", "poweroff"],
-              "hibernate": ["systemctl", "hibernate"],
-              "reboot": ["systemctl", "reboot"]
-          }
-      }
-  }
+  home.file.".config/caelestia/shell.json".text = ''
+    {
+        "general": {
+            "apps": {
+                "terminal": ["kitty"],
+                "audio": ["pavucontrol"]
+            }
+        },
+        "background": {
+            "enabled": true
+        },
+        "bar": {
+            "dragThreshold": 20,
+            "persistent": true,
+            "showOnHover": true,
+            "status": {
+                "showAudio": true,
+                "showBattery": true,
+                "showBluetooth": true,
+                "showKbLayout": true,
+                "showNetwork": true
+            },
+            "workspaces": {
+                "activeIndicator": true,
+                "activeLabel": "󰮯 ",
+                "activeTrail": false,
+                "label": "  ",
+                "occupiedBg": false,
+                "occupiedLabel": "󰮯 ",
+                "rounded": true,
+                "showWindows": true,
+                "shown": 5
+            }
+        },
+        "border": {
+            "rounding": 25,
+            "thickness": 10
+        },
+        "dashboard": {
+            "mediaUpdateInterval": 500,
+            "visualiserBars": 45
+        },
+        "launcher": {
+            "actionPrefix": ".",
+            "dragThreshold": 50,
+            "vimKeybinds": false,
+            "enableDangerousActions": false,
+            "maxShown": 8,
+            "maxWallpapers": 9,
+            "useFuzzy": {
+                "apps": false,
+                "actions": false,
+                "schemes": false,
+                "variants": false,
+                "wallpapers": false
+            }
+        },
+        "lock": {
+            "maxNotifs": 5
+        },
+        "notifs": {
+            "actionOnClick": false,
+            "clearThreshold": 0.3,
+            "defaultExpireTimeout": 5000,
+            "expandThreshold": 20,
+            "expire": true
+            
+        },
+        "osd": {
+            "hideDelay": 2000
+        },
+        "paths": {
+            "mediaGif": "root:/assets/bongocat.gif",
+            "sessionGif": "root:/assets/kurukuru.gif",
+            "wallpaperDir": "~/Pictures/Wallpapers"
+        },
+        "services": {
+            "audioIncrement": 0.1,
+            "weatherLocation": "",
+            "useFahrenheit": false,
+            "useTwelveHourClock": false
+        },
+        "session": {
+            "dragThreshold": 30,
+            "vimKeybinds": false,
+            "commands": {
+                "logout": ["loginctl", "terminate-user", ""],
+                "shutdown": ["systemctl", "poweroff"],
+                "hibernate": ["systemctl", "hibernate"],
+                "reboot": ["systemctl", "reboot"]
+            }
+        }
+    }
   '';
 
-  # Hyprland config 
+  # Hyprland config
   wayland.windowManager.hyprland.settings = {
-    
 
-  # gesture config
+    # gesture config
     gestures = {
       workspace_swipe = true;
 
     };
-  
-  # exec
+
+    # exec
     exec-once = [
       "systemctl --user start hyprpolkitagent"
       "systemctl --user start swayosd"
@@ -187,8 +192,11 @@
       force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
       disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
     };
-      dwindle = let ALWAYS_EAST = 2; 
-      in {
+    dwindle =
+      let
+        ALWAYS_EAST = 2;
+      in
+      {
         force_split = ALWAYS_EAST;
         preserve_split = true;
       };

@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   users.users.kruemmelspalter = {
     isNormalUser = true;
@@ -10,7 +16,7 @@
     ];
 
     packages = with pkgs; [
-      helix 
+      helix
       btop
       libreoffice-qt
       hunspell

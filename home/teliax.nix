@@ -1,15 +1,20 @@
-{ inputs, config, pkgs, specialArgs, lib,  ...}:
-
+{
+  inputs,
+  config,
+  pkgs,
+  specialArgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
     ./programs
     inputs.catppuccin.homeModules.catppuccin
   ];
-  
 
   home.username = "teliax";
-  home.homeDirectory =  "/home/teliax";
+  home.homeDirectory = "/home/teliax";
   home.stateVersion = "25.05";
 
   catppuccin = {
@@ -30,9 +35,6 @@
       };
     };
   };
-
-
-
 
   wayland.windowManager.hyprland.enable = true;
 

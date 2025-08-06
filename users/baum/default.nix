@@ -1,10 +1,16 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./sshkeys.nix
     ./packages.nix
   ];
-  
+
   users.users.baum = {
     isNormalUser = true;
     extraGroups = [
@@ -13,7 +19,7 @@
       "disk"
       "adbusers"
 
-    ]; 
+    ];
     packages = with pkgs; [
       wget
     ];

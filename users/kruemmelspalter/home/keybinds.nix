@@ -1,10 +1,16 @@
-{ config, pkgs, inputs, lib,... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
 
   wayland.windowManager.hyprland.settings = {
 
-  #input config
+    #input config
     input = {
       kb_layout = "us,mk";
       kb_variant = "altgr-intl,";
@@ -15,7 +21,7 @@
       };
     };
 
- # keybinds
+    # keybinds
     "$mod" = "SUPER";
     "$terminal" = "kitty";
     "$screenshot" = "slurp | grim -g - -  | wl-copy";
@@ -33,7 +39,7 @@
       "$mod, L, global, caelestia:lock"
       "SUPER+Shift, S, global, caelestia:screenshotFreeze"
       "$mod ,SPACE , global, caelestia:launcher"
-      
+
       # general hyprland
       "$mod, left, movefocus, l"
       "$mod, down, movefocus, d"
@@ -49,18 +55,22 @@
       "$mod, j, togglesplit"
 
     ]
-      ++ (
-        # workspaces
-        # binds $mod + [shift +] {0..9} to [move to] workspace {10, 1..9}
-        builtins.concatLists (builtins.genList (i:
-           let ws = if i == 0 then 10 else i;
-            in [
-              "$mod, ${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          )
-          10)
-      );
+    ++ (
+      # workspaces
+      # binds $mod + [shift +] {0..9} to [move to] workspace {10, 1..9}
+      builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = if i == 0 then 10 else i;
+          in
+          [
+            "$mod, ${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, ${toString i}, movetoworkspace, ${toString ws}"
+          ]
+        ) 10
+      )
+    );
 
     bindm = [
       "$mod, mouse:272, movewindow"
@@ -79,5 +89,5 @@
       ",XF86MonBrightnessUp, global, caelestia:brightnessUp"
     ];
 
-  };   
+  };
 }

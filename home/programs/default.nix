@@ -1,23 +1,24 @@
-{ inputs, config, pkgs, lib, ...}:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
-    imports = [
-      ./librewolf.nix
-     # ./spicetify.nix
-      ./terminal.nix
-      ./vscode.nix
-      ./vesktop.nix
+  imports = [
+    ./librewolf.nix
+    # ./spicetify.nix
+    ./terminal.nix
+    ./vscode.nix
+    ./vesktop.nix
   ];
 
-
-
-  
   # fonts
 
   fonts.fontconfig.enable = true;
-
-
 
   home.packages = with pkgs; [
     gcr
@@ -37,15 +38,15 @@
   services = {
     gnome-keyring.enable = true;
     hyprpolkitagent.enable = true;
-    
+
     udiskie = {
       enable = true;
       settings = {
         # workaround for
         # https://github.com/nix-community/home-manager/issues/632
         program_options = {
-            # replace with your favorite file manager
-            file_manager = "${pkgs.kdePackages.dolphin}/bin/dolphin/";
+          # replace with your favorite file manager
+          file_manager = "${pkgs.kdePackages.dolphin}/bin/dolphin/";
         };
       };
     };

@@ -1,10 +1,16 @@
-{ config, lib, pkgs, modulesPath, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ 
-      ./surface.nix
-    ];    
+  imports = [
+    ./surface.nix
+  ];
 
   boot = {
     loader = {
@@ -16,7 +22,7 @@
       };
     };
     initrd = {
-      kernelModules = ["usb_storage"];
+      kernelModules = [ "usb_storage" ];
       luks.devices.cryptroot = {
         device = "/dev/nvme0n1p2";
         preLVM = true;
