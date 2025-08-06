@@ -32,6 +32,18 @@
       FirefoxHome = {
         "Search" = false;
       };
+
+      SearchEngines = {
+        Default = "DuckDuckGo NoAI";
+        Add = [
+          {
+            Name = "DuckDuckGo NoAI";
+            URLTemplate = "https://noai.duckduckgo.com?q={searchTerms}";
+            IconUrl = "https://noai.duckduckgo.com/favicon.ico";
+          }
+        ];
+      };
+      
       HardwareAcceleration = true;
       Preferences = {
         "browser.preferences.defaultPerformanceSettings.enabled" = false;
