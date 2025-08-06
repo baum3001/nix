@@ -1,6 +1,6 @@
-{ inputs, config, pkgs, lib,  ...}:
+{ inputs, config, pkgs,  ...}:
 {
-    programs.vscode = lib.mkDefault {
+    programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
       profiles.default = {

@@ -1,10 +1,10 @@
-{ inputs, config, pkgs, lib, ...}:
+{ inputs, config, pkgs,  ...}:
 {
 
 home.packages = with pkgs; [
   fishPlugins.grc
 ];
-  programs = lib.mkDefault {
+  programs = {
     fish = {
     enable = true;
     interactiveShellInit = ''

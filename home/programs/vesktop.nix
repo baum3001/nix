@@ -1,6 +1,6 @@
-{ inputs, config, pkgs,  lib, ...}:
+{ inputs, config, pkgs,  ...}:
 {
-  programs.vesktop = lib.mkDefault {
+  programs.vesktop = {
       enable = true;
       settings = {
         arRPC = true;
