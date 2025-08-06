@@ -42,13 +42,14 @@
 
   programs.kitty.settings.font_size = 10;
 
-  programs.git.extraConfig = {
-    user = {
-      name = "Kruemmelspalter";
-      email = "kruemmelspalter@kruemmelspalter.org";
-      signingkey = "4F4A2EFAE38671C8";
-    };
-    push.autoSetupRemote = true;
+  programs.git = {
+    userName = "Kruemmelspalter";
+    userEmail = "kruemmelspalter@kruemmelspalter.org";
+
+    signing.key = "4F4A2EFAE38671C8";
+    signing.signByDefault = true;
+
+    extraConfig.push.autoSetupRemote = true;
   };
 
   xdg.configFile."helix/config.toml".text = ''
