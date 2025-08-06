@@ -20,6 +20,10 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   boot.blacklistedKernelModules = [ "bcma" ];
 
+  boot.extraModprobeConfig = ''
+      options hid_apple iso_layout=1
+    '';
+
   boot.initrd.luks.devices."jabolkovo".device = "/dev/disk/by-label/jabolkovo";
 
   fileSystems."/" =
