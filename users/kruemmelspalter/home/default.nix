@@ -36,6 +36,8 @@
 
   programs.kitty.settings.font_size = 10;
 
+  programs.git.extraConfig.push.autoSetupRemote = true;
+
   xdg.configFile."helix/config.toml".text = ''
       theme = "catpuccin_mocha"
     '';
