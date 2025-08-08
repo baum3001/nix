@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     fishPlugins.grc
+    grc
   ];
   programs = {
     fish = {
