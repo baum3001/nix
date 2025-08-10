@@ -54,6 +54,7 @@
             Mint = "󰣭";
             Macos = "󰀵";
             Manjaro = "";
+            NixOS = "";
             Linux = "󰌽";
             Gentoo = "󰣨";
             Fedora = "󰣛";
