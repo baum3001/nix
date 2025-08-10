@@ -38,7 +38,7 @@
         "$schema" = "https://starship.rs/config-schema.json";
 
         format = ''
-          [](red)$os$username[](bg:peach fg:red)$directory[](bg:yellow fg:peach)$git_branch$git_status[](fg:yellow bg:green)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:green bg:sapphire)$conda[](fg:sapphire bg:lavender)$time[ ](fg:lavender)$cmd_duration$line_break$character
+          [](red)$os$username[](bg:peach fg:red)$directory[](bg:yellow fg:peach)$git_branch$git_status[](fg:yellow bg:green)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:green bg:sapphire)$conda$localip[](fg:sapphire bg:lavender)$time[ ](fg:lavender)$cmd_duration$line_break$character
         '';
 
         palette = "catppuccin_mocha";
@@ -168,7 +168,12 @@
           format = "[$symbol$environment ]($style)";
           ignore_base = false;
         };
-
+        localip = {
+          ssh_only = false;
+          style = "fg:crust bg:sapphire";
+          format = "[@$localipv4]($style)";
+          disabled = false;
+        };
         time = {
           disabled = false;
           time_format = "%R";
