@@ -13,6 +13,7 @@
 
   users.users.baum = {
     isNormalUser = true;
+    description = "Stella";
     extraGroups = [
       "wheel"
       "networkmanager"
