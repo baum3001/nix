@@ -50,7 +50,7 @@
             }
         },
         "border": {
-            "rounding": 25,
+            "rounding": 10,
             "thickness": 10
         },
         "dashboard": {
@@ -126,7 +126,7 @@
       "caelestia shell -d"
     ];
     general = {
-      gaps_in = "3";
+      gaps_in = "0";
       gaps_out = "0";
       border_size = "0";
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
