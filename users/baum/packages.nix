@@ -17,6 +17,7 @@
     signal-desktop
     filezilla
     fractal
+    vlc
     gimp3
     altus
     scrcpy
