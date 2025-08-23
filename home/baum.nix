@@ -33,6 +33,12 @@
         size = "compact";
       };
     };
+    cursorTheme = {
+      package = pkgs.catppuccin-cursors.mochaSapphire;
+      name = "catppuccin-mocha-sapphire-cursors";
+      size = 10;
+    };
+
   };
 
   wayland.windowManager.hyprland.enable = true;
