@@ -181,6 +181,7 @@
             ./modules/locale_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
+            ./modules/fingerprint.nix
             ./users/baum
             inputs.sops-nix.nixosModules.sops
             ./nixconfig
