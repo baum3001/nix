@@ -65,7 +65,7 @@
             { networking.hostName = "nix-heizluefter"; }
             ./nixconfig
             ./hosts/nix-heizluefter
-            ./modules/locale_de.nix
+            ./modules/locale-us_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
             ./users/baum
@@ -103,7 +103,7 @@
             { networking.hostName = "nix-surface"; }
             ./nixconfig
             ./hosts/surface
-            ./modules/locale_de.nix
+            ./modules/locale-us_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
             ./users/baum
@@ -140,7 +140,7 @@
           modules = [
             { networking.hostName = "nix-desktop"; }
             ./hosts/desktop
-            ./modules/locale_de.nix
+            ./modules/locale-us_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
             ./users/baum
@@ -178,7 +178,7 @@
           modules = [
             { networking.hostName = "nix-t430"; }
             ./hosts/nix-t430
-            ./modules/locale_de.nix
+            ./modules/locale-us_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
             ./modules/fingerprint.nix
@@ -217,7 +217,7 @@
           modules = [
             { networking.hostName = "schlaeptop"; }
             ./hosts/schlaeptop
-            ./modules/locale_de.nix
+            ./modules/locale-us_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
             inputs.sops-nix.nixosModules.sops
@@ -253,7 +253,7 @@
           modules = [
             { networking.hostName = "jabolkovo"; }
             ./hosts/jabolkovo
-            ./modules/locale_de.nix
+            ./modules/locale-us_de.nix
             ./nixconfig
             ./users/kruemmelspalter
             inputs.home-manager.nixosModules.home-manager
