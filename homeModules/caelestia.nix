@@ -50,7 +50,7 @@
             }
         },
         "border": {
-            "rounding": 25,
+            "rounding": 10,
             "thickness": 10
         },
         "dashboard": {
@@ -126,9 +126,9 @@
       "caelestia shell -d"
     ];
     general = {
-      gaps_in = "3";
-      gaps_out = "10";
-      border_size = "2";
+      gaps_in = "1";
+      gaps_out = "0";
+      border_size = "0";
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
       # Set to true enable resizing windows by clicking and dragging on borders and gaps
       resize_on_border = "false";
@@ -138,7 +138,7 @@
     };
     # https://wiki.hyprland.org/Configuring/Variables/#decoration
     decoration = {
-      rounding = 10;
+      rounding = 0;
       rounding_power = 2;
       # Change transparency of focused and unfocused windows
       active_opacity = 1.0;

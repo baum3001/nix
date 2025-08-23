@@ -55,6 +55,7 @@
       "$mod, v, togglefloating"
       "$mod, s , exec, $screenshot"
       "$mod, j, togglesplit"
+      "$mod, a, fullscreen"
 
     ]
     ++ (
