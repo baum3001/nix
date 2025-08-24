@@ -17,97 +17,185 @@
 
   home.file.".config/caelestia/shell.json".text = ''
     {
-        "general": {
-            "apps": {
-                "terminal": ["kitty"],
-                "audio": ["pavucontrol"]
+    "appearance": {
+        "anim": {
+            "durations": {
+                "scale": 1
             }
         },
-        "background": {
-            "enabled": true
-        },
-        "bar": {
-            "dragThreshold": 20,
-            "persistent": true,
-            "showOnHover": true,
-            "status": {
-                "showAudio": true,
-                "showBattery": true,
-                "showBluetooth": true,
-                "showKbLayout": true,
-                "showNetwork": true
+        "font": {
+            "family": {
+                "material": "Material Symbols Rounded",
+                "mono": "CaskaydiaCove NF",
+                "sans": "Rubik"
             },
-            "workspaces": {
-                "activeIndicator": true,
-                "activeLabel": "󰮯 ",
-                "activeTrail": false,
-                "label": "  ",
-                "occupiedBg": false,
-                "occupiedLabel": "󰮯 ",
-                "rounded": true,
-                "showWindows": true,
-                "shown": 5
+            "size": {
+                "scale": 1
             }
         },
-        "border": {
-            "rounding": 10,
-            "thickness": 10
+        "padding": {
+            "scale": 1
         },
-        "dashboard": {
-            "mediaUpdateInterval": 500,
-            "visualiserBars": 45
+        "rounding": {
+        	"scale": 1
         },
-        "launcher": {
-            "actionPrefix": ".",
-            "dragThreshold": 50,
-            "vimKeybinds": false,
-            "enableDangerousActions": false,
-            "maxShown": 8,
-            "maxWallpapers": 9,
-            "useFuzzy": {
-                "apps": false,
-                "actions": false,
-                "schemes": false,
-                "variants": false,
-                "wallpapers": false
-            }
+        "spacing": {
+            "scale": 1
         },
-        "lock": {
-            "maxNotifs": 5
+        "transparency": {
+            "enabled": false,
+            "base": 0.85,
+            "layers": 0.4
+        }
+    },
+    "general": {
+        "apps": {
+            "terminal": ["kitty"],
+            "audio": ["pavucontrol"]
+        }
+    },
+    "background": {
+        "desktopClock": {
+            "enabled": false
         },
-        "notifs": {
-            "actionOnClick": false,
-            "clearThreshold": 0.3,
-            "defaultExpireTimeout": 5000,
-            "expandThreshold": 20,
-            "expire": true
-            
+        "enabled": true
+    },
+    "bar": {
+        "dragThreshold": 20,
+        "entries": [
+        	{
+   	            "id": "logo",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "workspaces",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "spacer",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "activeWindow",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "spacer",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "tray",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "clock",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "statusIcons",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "power",
+   	            "enabled": true
+   	        },
+   	        {
+   	            "id": "idleInhibitor",
+   	            "enabled": true
+   	        }
+        ],
+        "persistent": true,
+        "showOnHover": true,
+        "status": {
+            "showAudio": true,
+            "showBattery": true,
+            "showBluetooth": true,
+            "showKbLayout": true,
+            "showNetwork": true
         },
-        "osd": {
-            "hideDelay": 2000
+        "tray": {
+            "background": false,
+            "recolour": false
         },
-        "paths": {
-            "mediaGif": "root:/assets/bongocat.gif",
-            "sessionGif": "root:/assets/kurukuru.gif",
-            "wallpaperDir": "~/Pictures/Wallpapers"
-        },
-        "services": {
-            "audioIncrement": 0.1,
-            "weatherLocation": "",
-            "useFahrenheit": false,
-            "useTwelveHourClock": false
-        },
-        "session": {
-            "dragThreshold": 30,
-            "vimKeybinds": false,
-            "commands": {
-                "logout": ["loginctl", "terminate-user", ""],
-                "shutdown": ["systemctl", "poweroff"],
-                "hibernate": ["systemctl", "hibernate"],
-                "reboot": ["systemctl", "reboot"]
-            }
+        "workspaces": {
+            "activeIndicator": true,
+            "activeLabel": "󰮯",
+            "activeTrail": false,
+            "label": "  ",
+            "occupiedBg": false,
+            "occupiedLabel": "󰮯",
+            "perMonitorWorkspaces": true,
+            "showWindows": true,
+            "shown": 5
+        }
+    },
+    "border": {
+        "rounding": 10,
+        "thickness": 10
+    },
+    "dashboard": {
+        "enabled": true,
+        "dragThreshold": 50,
+        "mediaUpdateInterval": 500,
+        "showOnHover": false,
+        "visualiserBars": 45
+    },
+    "launcher": {
+        "actionPrefix": ".",
+        "dragThreshold": 50,
+        "vimKeybinds": false,
+        "enableDangerousActions": false,
+        "maxShown": 8,
+        "maxWallpapers": 9,
+        "specialPrefix": "@",
+        "useFuzzy": {
+            "apps": false,
+            "actions": false,
+            "schemes": false,
+            "variants": false,
+            "wallpapers": false
+        }
+    },
+    "lock": {
+        "recolourLogo": true
+    },
+    "notifs": {
+        "actionOnClick": false,
+        "clearThreshold": 0.3,
+        "defaultExpireTimeout": 5000,
+        "expandThreshold": 20,
+        "expire": true
+    },
+    "osd": {
+        "hideDelay": 2000
+    },
+    "paths": {
+        "mediaGif": "root:/assets/bongocat.gif",
+        "sessionGif": "root:/assets/kurukuru.gif",
+        "wallpaperDir": "~/Pictures/Wallpapers"
+    },
+    "services": {
+        "audioIncrement": 0.1,
+        "defaultPlayer": "Spotify",
+        "playerAliases": [{
+            "com.github.th_ch.youtube_music": "YT Music"
+        }],
+        "weatherLocation": "",
+        "useFahrenheit": false,
+        "useTwelveHourClock": false,
+        "smartScheme": true
+    },
+    "session": {
+        "dragThreshold": 30,
+        "vimKeybinds": false,
+        "commands": {
+            "logout": ["loginctl", "terminate-user", ""],
+            "shutdown": ["systemctl", "poweroff"],
+            "hibernate": ["systemctl", "suspend"],
+            "reboot": ["systemctl", "reboot"]
         }
     }
+}
   '';
 
   # Hyprland config

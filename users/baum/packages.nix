@@ -21,6 +21,7 @@
     gimp3
     altus
     scrcpy
+    lutris
     bitwarden-desktop
     fluffychat
   ];
