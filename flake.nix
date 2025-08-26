@@ -244,6 +244,44 @@
           ];
         };
 
+        ramenwerk16 = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            configName = "ramenwerk16";
+          };
+          modules = [
+            { networking.hostName = "ramenwerk16"; }
+            ./nixconfig
+            ./hosts/ramenwerk16
+            ./modules/locale_de.nix
+            ./modules/steam.nix
+            ./modules/openssh.nix
+            ./users/leouar
+            inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+
+
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+                users.leouar.imports = [
+
+                  ./homeModules/caelestia.nix
+
+                  ./homeModules/spicetify.nix
+                  ./hosts/ramenwerk16/home
+                  ./users/leouar/home
+                ];
+              };
+            }
+          ];
+        };
+
         jabolkovo = inputs.nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
