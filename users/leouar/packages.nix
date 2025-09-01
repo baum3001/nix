@@ -13,7 +13,6 @@
     hunspellDicts.de_DE
     nextcloud-client
 
-
     signal-desktop
 
     lutris

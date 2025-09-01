@@ -260,7 +260,6 @@
             ./users/leouar
             inputs.nixos-hardware.nixosModules.framework-16-7040-amd
 
-
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {

@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -17,8 +17,8 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.initrd.luks.devices."luks-62845fd6-9c83-45af-8d48-9a6226ec36e3".device = "/dev/disk/by-uuid/62845fd6-9c83-45af-8d48-9a6226ec36e3";
-
+  boot.initrd.luks.devices."luks-62845fd6-9c83-45af-8d48-9a6226ec36e3".device =
+    "/dev/disk/by-uuid/62845fd6-9c83-45af-8d48-9a6226ec36e3";
 
   # Enable networking
 
