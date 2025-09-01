@@ -41,6 +41,9 @@
       "$mod, L, global, caelestia:lock"
       "SUPER+Shift, S, global, caelestia:screenshotFreeze"
       "$mod ,SPACE , global, caelestia:launcher"
+      "$mod, W, exec, caelestia emoji -p"
+      "$mod, V, exec, caelestia clipboard"
+      "$mod+Shift, V, exec, caelestia clipboard -d"
 
       # general hyprland
 
@@ -52,7 +55,7 @@
       "$mod CTRL, down, movewindow, d"
       "$mod CTRL, up, movewindow, u"
       "$mod CTRL, right, movewindow, r"
-      "$mod, v, togglefloating"
+      "$mod, t, togglefloating"
       "$mod, s , exec, $screenshot"
       "$mod, j, togglesplit"
       "$mod, a, fullscreen"
@@ -74,7 +77,7 @@
         ) 9
       )
     );
-
+    
     bindm = [
 
       "$mod, mouse:272, movewindow"

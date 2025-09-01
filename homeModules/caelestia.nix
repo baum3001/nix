@@ -13,6 +13,10 @@
   home.packages = with pkgs; [
     inputs.caelestia.packages."${pkgs.system}".default
     inputs.caelestia-cli.packages."${pkgs.system}".default
+    # dependencies
+    cliphist
+    wl-clipboard
+
   ];
 
   home.file.".config/caelestia/shell.json".text = ''
@@ -212,6 +216,8 @@
       "systemctl --user start hyprpolkitagent"
       "systemctl --user start swayosd"
       "caelestia shell -d"
+      "exec-once = wl-paste --type text --watch cliphist store # Stores only text data"
+      "exec-once = wl-paste --type image --watch cliphist store # Stores only image data"
     ];
     general = {
       gaps_in = "1";
