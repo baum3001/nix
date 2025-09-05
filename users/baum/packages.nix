@@ -24,5 +24,7 @@
     lutris
     bitwarden-desktop
     fluffychat
+    wineWowPackages.staging
+    termscp
   ];
 }

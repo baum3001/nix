@@ -29,7 +29,7 @@
     device = "/dev/disk/by-uuid/e4e23706-3753-49b2-99ce-8cff841b3a02";
     allowDiscards = true;
     keyFileSize = 4096;
-    keyFile = "/dev/sda";
+    keyFile = "/dev/sdb";
   };
 
   # Allow unfree packages
