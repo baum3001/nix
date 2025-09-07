@@ -68,6 +68,7 @@
             ./modules/locale-us_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
+            ./modules/mxmaster3s.nix
             ./users/baum
 
             inputs.sops-nix.nixosModules.sops

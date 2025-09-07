@@ -77,7 +77,7 @@
         ) 9
       )
     );
-    
+
     bindm = [
 
       "$mod, mouse:272, movewindow"
