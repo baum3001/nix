@@ -54,7 +54,7 @@
         },
         "general": {
             "apps": {
-                "terminal": ["kitty"],
+                "terminal": ["foot"],
                 "audio": ["pavucontrol"]
             }
         },
@@ -216,6 +216,7 @@
       "systemctl --user start hyprpolkitagent"
       "systemctl --user start swayosd"
       "caelestia shell -d"
+      "foot --server"
       "exec-once = wl-paste --type text --watch cliphist store # Stores only text data"
       "exec-once = wl-paste --type image --watch cliphist store # Stores only image data"
     ];

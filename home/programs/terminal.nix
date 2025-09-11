@@ -250,5 +250,19 @@
         background_blur = 5;
       };
     };
+    foot = {
+      enable = true;
+      server.enable = true;
+      settings = {
+        main = {
+          shell = "fish";
+          font = "Comic Code Ligatures Nerd Font:size=11";
+        };
+        colors = {
+          alpha = "0.5";
+        };
+      };
+
+    };
   };
 }

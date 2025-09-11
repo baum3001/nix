@@ -26,5 +26,6 @@
     fluffychat
     wineWowPackages.staging
     termscp
+    prismlauncher
   ];
 }

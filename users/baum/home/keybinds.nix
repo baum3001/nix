@@ -23,7 +23,7 @@
     # keybinds
 
     "$mod" = "SUPER";
-    "$terminal" = "kitty";
+    "$terminal" = "footclient";
     "$screenshot" = "slurp | grim -g - -  | wl-copy";
 
     bind = [
