@@ -1,0 +1,19 @@
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  users.users.anni.packages = with pkgs; [
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
+    hunspellDicts.de_DE
+    signal-desktop
+    vlc
+    prismlauncher
+    wget
+  ];
+}

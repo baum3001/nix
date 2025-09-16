@@ -27,5 +27,6 @@
     wineWowPackages.staging
     termscp
     prismlauncher
+    wget
   ];
 }

@@ -24,6 +24,7 @@
 
     "$mod" = "SUPER";
     "$terminal" = "footclient";
+    "$screenshot" = "slurp | grim -g - -  | wl-copy";
 
     bind = [
 

@@ -158,12 +158,16 @@
                   inherit inputs;
                 };
                 users.baum.imports = [
-                  ./home/baum.nix
                   ./homeModules/caelestia.nix
                   ./homeModules/baum-git.nix
                   ./homeModules/spicetify.nix
                   ./hosts/desktop/home
                   ./users/baum/home
+                ];
+                users.anni.imports = [
+                  ./homeModules/caelestia.nix
+                  ./hosts/desktop/home
+                  ./users/anni/home
                 ];
               };
             }

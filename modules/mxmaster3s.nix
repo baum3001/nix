@@ -17,7 +17,7 @@
     wants = [ "multi-user.target" ];
     serviceConfig = {
       Type = "simple";
-      ExecStart = "/run/current-system/sw/bin/logid"; 
+      ExecStart = "/run/current-system/sw/bin/logid";
       User = "root";
     };
     wantedBy = [ "graphical.target" ];
@@ -25,188 +25,188 @@
   };
 
   environment.etc."logid.cfg".text = ''
-devices: ({
-  name: "MX Master 3S";
+    devices: ({
+      name: "MX Master 3S";
 
-  smartshift: {
-    on: true;
-    threshold: 15;
-  };
-
-  hiresscroll: {
-    hires: false;
-    invert: false;
-    target: false;
-  };
-  thumbwheel: {
-    invert: true;
-  };
-
-  dpi: 1500; // max=4000
-
-  buttons: (
-    // Forward button
-    {
-      cid: 0x56;
-      action = {
-        type: "Gestures";
-        gestures: (
-          {
-            direction: "None";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_FORWARD" ];
-            }
-          },
-
-          {
-            direction: "Up";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_PLAYPAUSE" ];
-            }
-          },
-
-          {
-            direction: "Down";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_LEFTMETA" ];
-            }
-          },
-
-          {
-            direction: "Right";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_NEXTSONG" ];
-            }
-          },
-
-          {
-            direction: "Left";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_PREVIOUSSONG" ];
-            }
-          }
-        );
+      smartshift: {
+        on: true;
+        threshold: 15;
       };
-    },
 
-    // Back button
-    {
-      cid: 0x53;
-      action = {
-        type: "Gestures";
-        gestures: (
-          {
-            direction: "None";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_BACK" ];
-            }
-          }
-        );
+      hiresscroll: {
+        hires: false;
+        invert: false;
+        target: false;
       };
-    },
-
-    // Gesture button (hold and move)
-    {
-      cid: 0xc3;
-      action = {
-        type: "Gestures";
-        gestures: (
-          {
-            direction: "None";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_LEFTMETA" ]; // open activities overview
-            }
-          },
-
-          {
-            direction: "Right";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_LEFTMETA", "KEY_RIGHT" ]; // snap window to right
-            }
-          },
-
-          {
-            direction: "Left";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_LEFTMETA", "KEY_LEFT" ];
-            }
-		  },
-
-		  {
-            direction: "Up";
-            mode: "onRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_LEFTMETA", "KEY_UP" ]; // maximize window
-            }
-		  },
-		  
-		  {
-            direction: "Down";
-            mode: "OnRelease";
-            action = {
-              type: "Keypress";
-              keys: [ "KEY_LEFTMETA", "KEY_DOWN" ]; // minimize window
-            }
-          }
-        );
+      thumbwheel: {
+        invert: true;
       };
-    },
-	
-    // Top button
-    {
-      cid: 0xc4;
-      action = {
-        type: "Gestures";
-        gestures: (
-          {
-            direction: "None";
-            mode: "OnRelease";
-            action = {
-              type: "ToggleSmartShift";
-            }
-          },
 
-          {
-            direction: "Up";
-            mode: "OnRelease";
-            action = {
-              type: "ChangeDPI";
-              inc: 500,
-            }
-          },
+      dpi: 1500; // max=4000
 
-          {
-            direction: "Down";
-            mode: "OnRelease";
-            action = {
-              type: "ChangeDPI";
-              inc: -500,
-            }
-          }
-        );
-      };
-    }
-  );
-});
+      buttons: (
+        // Forward button
+        {
+          cid: 0x56;
+          action = {
+            type: "Gestures";
+            gestures: (
+              {
+                direction: "None";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_FORWARD" ];
+                }
+              },
+
+              {
+                direction: "Up";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_PLAYPAUSE" ];
+                }
+              },
+
+              {
+                direction: "Down";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_LEFTMETA" ];
+                }
+              },
+
+              {
+                direction: "Right";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_NEXTSONG" ];
+                }
+              },
+
+              {
+                direction: "Left";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_PREVIOUSSONG" ];
+                }
+              }
+            );
+          };
+        },
+
+        // Back button
+        {
+          cid: 0x53;
+          action = {
+            type: "Gestures";
+            gestures: (
+              {
+                direction: "None";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_BACK" ];
+                }
+              }
+            );
+          };
+        },
+
+        // Gesture button (hold and move)
+        {
+          cid: 0xc3;
+          action = {
+            type: "Gestures";
+            gestures: (
+              {
+                direction: "None";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_LEFTMETA" ]; // open activities overview
+                }
+              },
+
+              {
+                direction: "Right";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_LEFTMETA", "KEY_RIGHT" ]; // snap window to right
+                }
+              },
+
+              {
+                direction: "Left";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_LEFTMETA", "KEY_LEFT" ];
+                }
+    		  },
+
+    		  {
+                direction: "Up";
+                mode: "onRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_LEFTMETA", "KEY_UP" ]; // maximize window
+                }
+    		  },
+    		  
+    		  {
+                direction: "Down";
+                mode: "OnRelease";
+                action = {
+                  type: "Keypress";
+                  keys: [ "KEY_LEFTMETA", "KEY_DOWN" ]; // minimize window
+                }
+              }
+            );
+          };
+        },
+    	
+        // Top button
+        {
+          cid: 0xc4;
+          action = {
+            type: "Gestures";
+            gestures: (
+              {
+                direction: "None";
+                mode: "OnRelease";
+                action = {
+                  type: "ToggleSmartShift";
+                }
+              },
+
+              {
+                direction: "Up";
+                mode: "OnRelease";
+                action = {
+                  type: "ChangeDPI";
+                  inc: 500,
+                }
+              },
+
+              {
+                direction: "Down";
+                mode: "OnRelease";
+                action = {
+                  type: "ChangeDPI";
+                  inc: -500,
+                }
+              }
+            );
+          };
+        }
+      );
+    });
 
   '';
 }

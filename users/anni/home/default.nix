@@ -8,12 +8,13 @@
 
 {
   imports = [
-    ./programs
+    ./keybinds.nix
+    ../../../home/programs
     inputs.catppuccin.homeModules.catppuccin
   ];
 
-  home.username = "baum";
-  home.homeDirectory = "/home/baum";
+  home.username = "anni";
+  home.homeDirectory = "/home/anni";
   home.stateVersion = "25.05";
 
   catppuccin = {
@@ -33,16 +34,24 @@
         size = "compact";
       };
     };
-    cursorTheme = {
-      package = pkgs.catppuccin-cursors.mochaSapphire;
-      name = "catppuccin-mocha-sapphire-cursors";
-      size = 10;
-    };
-
   };
 
   wayland.windowManager.hyprland.enable = true;
 
   programs.home-manager.enable = true;
 
+  programs.kitty.settings.font_size = 10;
+
+  programs.git = {
+    userName = "Anni";
+    userEmail = "anni@sometree.dev";
+
+    signing.signByDefault = true;
+
+    extraConfig.push.autoSetupRemote = true;
+  };
+
+  xdg.configFile."helix/config.toml".text = ''
+    theme = "catppuccin_mocha"
+  '';
 }

@@ -7,15 +7,14 @@
 }:
 {
   imports = [
-    ./sshkeys.nix
+    ./networking.nix
     ./packages.nix
   ];
 
-  users.users.baum = {
+  users.users.anni = {
     isNormalUser = true;
-    description = "Stella";
+    description = "Anni";
     extraGroups = [
-      "wheel"
       "networkmanager"
       "disk"
       "adbusers"
