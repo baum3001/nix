@@ -82,7 +82,6 @@
                   inherit inputs;
                 };
                 users.baum.imports = [
-                  ./home/baum.nix
                   ./homeModules/caelestia.nix
                   ./homeModules/baum-git.nix
                   ./homeModules/spicetify.nix
@@ -120,7 +119,6 @@
                   inherit inputs;
                 };
                 users.baum.imports = [
-                  ./home/baum.nix
                   ./homeModules/caelestia.nix
                   ./homeModules/baum-git.nix
                   ./homeModules/spicetify.nix
@@ -145,6 +143,7 @@
             ./modules/steam.nix
             ./modules/openssh.nix
             ./users/baum
+            ./users/anni
             inputs.sops-nix.nixosModules.sops
             ./nixconfig
             inputs.nari.nixosModules.default
@@ -201,7 +200,6 @@
                   inherit inputs;
                 };
                 users.baum.imports = [
-                  ./home/baum.nix
                   ./homeModules/caelestia.nix
                   ./homeModules/baum-git.nix
                   ./homeModules/spicetify.nix
@@ -259,7 +257,7 @@
             { networking.hostName = "ramenwerk16"; }
             ./nixconfig
             ./hosts/ramenwerk16
-            ./modules/locale_de.nix
+            ./modules/locale-us_de.nix
             ./modules/steam.nix
             ./modules/openssh.nix
             ./users/leouar
